@@ -15,6 +15,7 @@ import argparse
 import json
 import logging
 import os
+import sys
 
 import psycopg
 
@@ -37,7 +38,7 @@ def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     if a.cmd == "run":
         src = a.source if a.source != "auto" else ("podcastindex" if sources.have_podcastindex_keys() else "itunes")
-        print(f"catalogue: {src}")
+        print(f"catalogue: {src}", file=sys.stderr)        # stdout is the JSON summary only
 
         def listings(log):
             if src == "itunes":
