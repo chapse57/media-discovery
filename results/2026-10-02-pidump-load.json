@@ -1,0 +1,38 @@
+{
+  "source_file": "data\\podcastindex_feeds.db",
+  "source_bytes": 5097177088,
+  "sqlite_table": "podcasts",
+  "sqlite_rows": 4731573,
+  "sqlite_count_seconds": 0.3,
+  "columns": 42,
+  "copy_seconds": 100.4,
+  "rows_per_second": 47112,
+  "index_seconds": {
+    "primary key (id)": 5.6,
+    "itunes_id": 1.5,
+    "podcast_guid": 6.0,
+    "url_key": 10.5,
+    "original_url_key": 10.7
+  },
+  "index_seconds_total": 34.3,
+  "analyze_seconds": 1.2,
+  "values_nulled_or_cleaned": {},
+  "pg_rows": 4731573,
+  "dead": 0,
+  "with_itunes_id": 2970036,
+  "with_podcast_guid": 4731428,
+  "itunes_ids_on_more_than_one_row": 1656,
+  "url_keys_on_more_than_one_row": 3756,
+  "marked_duplicate_of_another_row": 2769,
+  "newest_item": "2026-09-26",
+  "table_size": "6327 MB",
+  "postgres": "PostgreSQL 16.15 (Debian 16.15-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "rows_equal": true,
+  "machine": {
+    "os": "Windows-10-10.0.26200-SP0",
+    "cpu": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+    "logical_cpus": 12,
+    "ram_gb": 31.2,
+    "python": "3.11.9"
+  }
+}

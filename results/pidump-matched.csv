@@ -1,0 +1,279 @@
+show_id,title,ours,dump_url,matched_by
+1,NPR News Now,https://feeds.npr.org/500005/podcast.xml,https://feeds.npr.org/500005/podcast.xml,itunes_id
+2,Global News Podcast,https://podcasts.files.bbci.co.uk/p02nq0gn.rss,https://podcasts.files.bbci.co.uk/p02nq0gn.rss,itunes_id
+3,World News Tonight with David Muir,https://feeds.megaphone.fm/ESP4140596756,https://feeds.megaphone.fm/ESP4140596756,itunes_id
+4,Fox News Hourly Update,https://feeds.megaphone.fm/FOXM2252206613,https://feeds.megaphone.fm/FOXM2252206613,itunes_id
+5,Reuters World News,https://feeds.megaphone.fm/reutersworldnews,https://feeds.megaphone.fm/reutersworldnews,itunes_id
+6,Anderson Cooper 360,https://feeds.megaphone.fm/WMHY1640189360,https://feeds.megaphone.fm/WMHY1640189360,itunes_id
+7,Up First from NPR,https://feeds.npr.org/510318/podcast.xml,https://feeds.npr.org/510318/podcast.xml,itunes_id
+8,WSJ What’s News,https://video-api.shdsvc.dowjones.io/api/podcasts/feed/the%20wall%20street%20journal%20whats%20news,https://feeds.simplecast.com/BA5QWI2p,itunes_id
+9,PBS News Hour - Full Show,https://www.pbs.org/newshour/feeds/rss/podcasts/show,https://www.pbs.org/newshour/feeds/rss/podcasts/show,itunes_id
+10,TODAY,https://podcastfeeds.nbcnews.com/TODAY,https://podcastfeeds.nbcnews.com/TODAY,itunes_id
+11,Here's the Scoop,https://feeds.simplecast.com/u8MC4WkR,https://feeds.simplecast.com/u8MC4WkR,itunes_id
+12,The Fox News Rundown,https://feeds.megaphone.fm/FOXM1880458659,https://feeds.megaphone.fm/FOXM1880458659,itunes_id
+13,The Rachel Maddow Show,https://feeds.simplecast.com/LU_7w7GU,https://podcastfeeds.nbcnews.com/msnbc-rachel-maddow,itunes_id
+14,The Daily Beast Podcast,https://feeds.megaphone.fm/QCD5580850161,https://feeds.megaphone.fm/QCD5580850161,itunes_id
+15,Economist Podcasts,https://access.acast.com/rss/ec380acc-fe13-46a0-991f-a1e508d126f8,https://access.acast.com/rss/ec380acc-fe13-46a0-991f-a1e508d126f8,itunes_id
+16,Inside Trump's Head,https://feeds.megaphone.fm/QCD8589611489,https://feeds.megaphone.fm/QCD8589611489,itunes_id
+17,What A Day,https://audioboom.com/channels/5166630.rss,https://audioboom.com/channels/5166630.rss,itunes_id
+18,Real Time with Bill Maher,https://feeds.megaphone.fm/WMHY1886903044,https://feeds.megaphone.fm/WMHY1886903044,itunes_id
+19,Newshour,https://podcasts.files.bbci.co.uk/p002vsnk.rss,https://podcasts.files.bbci.co.uk/p002vsnk.rss,itunes_id
+20,The Opinions,https://feeds.simplecast.com/kphrlDnb,https://feeds.simplecast.com/kphrlDnb,itunes_id
+21,CNN NewsNight with Abby Phillip,https://feeds.megaphone.fm/WMHY6221692713,https://feeds.megaphone.fm/WMHY6221692713,itunes_id
+22,The Lead with Jake Tapper,https://feeds.megaphone.fm/WMHY4053344139,https://feeds.megaphone.fm/WMHY4053344139,itunes_id
+23,Rush Limbaugh: The Man Behind the Golden EIB Microphone,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/2ae00640-ad40-4a30-bbeb-ae28005325f3/6f4b6c18-d80f-49d2-9e71-ae2800532610/podcast.rss,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/2ae00640-ad40-4a30-bbeb-ae28005325f3/6f4b6c18-d80f-49d2-9e71-ae2800532610/podcast.rss,itunes_id
+24,NFL: The Coaches Show,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/cf5e0d7b-1ef6-4a66-9b34-ae390070e542/a52bcbe5-3ebe-45be-8d68-ae390070e54b/podcast.rss,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/cf5e0d7b-1ef6-4a66-9b34-ae390070e542/a52bcbe5-3ebe-45be-8d68-ae390070e54b/podcast.rss,itunes_id
+25,The NFL Films Podcast,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/541b2141-1d17-48b6-80c5-ae3c00090971/e2b70368-d933-4dac-b544-ae3c0009097a/podcast.rss,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/541b2141-1d17-48b6-80c5-ae3c00090971/e2b70368-d933-4dac-b544-ae3c0009097a/podcast.rss,itunes_id
+27,NFL: The R & B Podcast with Michael Robinson & Nate Burleson,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/ab15c26a-aeca-4705-a8ae-ae390070e592/39af8dcd-0611-4ec0-987f-ae390070e59b/podcast.rss,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/ab15c26a-aeca-4705-a8ae-ae390070e592/39af8dcd-0611-4ec0-987f-ae390070e59b/podcast.rss,itunes_id
+28,"Today, Explained",https://feeds.megaphone.fm/VMP5705694065,https://feeds.megaphone.fm/VMP5705694065,itunes_id
+29,Mister President par Europe 1 Studio,https://feeds.audiomeans.fr/feed/69950213-331e-4145-9f9d-c4dd8313a8e6.xml,https://feeds.audiomeans.fr/feed/69950213-331e-4145-9f9d-c4dd8313a8e6.xml,itunes_id
+30,Tout roule : à vélo,https://feeds.audiomeans.fr/feed/1f1ce17c-bced-4cdb-8acf-db326ffca350.xml,https://feeds.audiomeans.fr/feed/1f1ce17c-bced-4cdb-8acf-db326ffca350.xml,itunes_id
+31,"Napoléon, cet inconnu",https://feeds.audiomeans.fr/feed/b825a73c-9475-4a9c-9c95-68335b837045.xml,https://www.europe1.fr/rss/podcasts/napoleon-cet-inconnu.xml,itunes_id
+32,Breaking News from Pod Save America,https://feeds.megaphone.fm/CROOKEDMEDIAINC9307272170,https://feeds.megaphone.fm/CROOKEDMEDIAINC9307272170,itunes_id
+33,Why Is This Happening? The Chris Hayes Podcast,https://feeds.simplecast.com/Ftpd36Dg,https://podcastfeeds.nbcnews.com/why-is-this-happening-with-chris-hayes,itunes_id
+34,Mesdames,https://feeds.audiomeans.fr/feed/62760cc3-26b9-4aae-94ec-e729a80b6b63.xml,https://feeds.audiomeans.fr/feed/62760cc3-26b9-4aae-94ec-e729a80b6b63.xml,itunes_id
+35,WSJ Opinion: Potomac Watch,https://video-api.shdsvc.dowjones.io/api/podcasts/feed/wsj%20opinion%20potomac%20watch,https://feeds.simplecast.com/uvLfx5GI,itunes_id
+37,Stateside with Kai and Carter,https://feeds.acast.com/public/shows/69f1f631d7e73f5a692d1d3c,https://feeds.acast.com/public/shows/69f1f631d7e73f5a692d1d3c,itunes_id
+39,On Point with Meghna Chakrabarti,https://rss.wbur.org/onpoint/podcast,https://rss.wbur.org/onpoint/podcast,itunes_id
+40,Today in Focus,https://www.theguardian.com/news/series/todayinfocus/podcast.xml,https://www.theguardian.com/news/series/todayinfocus/podcast.xml,itunes_id
+41,The Assignment with Antonia Hylton,https://feeds.simplecast.com/BmoXwO3d,https://feeds.simplecast.com/BmoXwO3d,itunes_id
+43,The Parnas Perspective,https://rss.amperwave.net/v2/feed/audacynetwork/419b3f1f9c1da2d7eba34e445595e9dc,https://feeds.megaphone.fm/MTH4368798504,itunes_id
+44,ProPublica Narrated,https://feeds.megaphone.fm/propublica-narrated,https://feeds.megaphone.fm/propublica-narrated,itunes_id
+45,Scott MacFarlane Reports,https://rss.amperwave.net/v2/feed/audacynetwork/74d03e3aef9306c0cb994520989ea2d7,https://rss.amperwave.net/v2/feed/audacynetwork/74d03e3aef9306c0cb994520989ea2d7,itunes_id
+46,Apple News In Conversation,https://apple.news/podcast/apple_news_in_conversation,https://apple.news/podcast/apple_news_in_conversation,itunes_id
+47,"Left, Right & Center",https://leftrightandcenter-feed.kcrw.com,https://leftrightandcenter-feed.kcrw.com,itunes_id
+48,1A,https://feeds.npr.org/510316/podcast.xml,https://feeds.npr.org/510316/podcast.xml,itunes_id
+49,The Don Lemon Show,https://rss.libsyn.com/shows/625415/destinations/5506180.xml,https://rss.libsyn.com/shows/625415/destinations/5506180.xml,itunes_id
+50,The Last Word with Lawrence O’Donnell,https://feeds.simplecast.com/lQR7LFLn,https://podcastfeeds.nbcnews.com/the-last-word,itunes_id
+51,Morning Joe,https://feeds.simplecast.com/5EFCkAYb,https://podcastfeeds.nbcnews.com/msnbc-morning-joe,itunes_id
+52,Pivot,https://feeds.megaphone.fm/pivot,https://feeds.megaphone.fm/pivot,itunes_id
+53,Interesting Times,https://feeds.simplecast.com/bS1LZG8m,https://feeds.simplecast.com/2xzUiHxw,itunes_id
+54,NBC Nightly News with Tom Llamas,https://podcastfeeds.nbcnews.com/nightlynews,https://podcastfeeds.nbcnews.com/nbc-nightly-news,itunes_id
+55,Start Here,https://feeds.megaphone.fm/ESP8447327256,https://feeds.megaphone.fm/ESP8447327256,itunes_id
+56,Piers Morgan Uncensored,https://feeds.megaphone.fm/RSV2152356740,https://feeds.megaphone.fm/RSV2152356740,itunes_id
+57,State of Play with Peter Alexander,https://feeds.simplecast.com/6A7CUq3h,https://feeds.simplecast.com/6A7CUq3h,itunes_id
+58,NPR's Newsmakers,https://feeds.npr.org/g-s1-114952/podcast.xml,https://feeds.npr.org/g-s1-114952/podcast.xml,itunes_id
+59,Bleep! with Ana Navarro,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/c4bb1422-7444-4e21-bd17-b3f400ee6e9c/674ba28f-3a57-4da7-833b-b3f400ee7337/podcast.rss,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/c4bb1422-7444-4e21-bd17-b3f400ee6e9c/674ba28f-3a57-4da7-833b-b3f400ee7337/podcast.rss,itunes_id
+60,"Money, Power, Politics with Stephanie Ruhle",https://feeds.simplecast.com/tTpWCy3j,https://feeds.simplecast.com/tTpWCy3j,itunes_id
+61,The Times of Israel Daily Briefing,https://www.omnycontent.com/d/playlist/a2539154-43b6-4c4f-b951-aca300136a80/f8a9521a-98d3-421a-a708-aca600dd355b/e96b6c46-116b-4376-aa28-aca600deea22/podcast.rss,https://www.omnycontent.com/d/playlist/a2539154-43b6-4c4f-b951-aca300136a80/f8a9521a-98d3-421a-a708-aca600dd355b/e96b6c46-116b-4376-aa28-aca600deea22/podcast.rss,itunes_id
+62,The Sean Hannity Show,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/4a0aa31f-d7ec-4ee3-915f-ae300188d2da/554b2774-1072-4afc-88b3-ae300188d2e8/podcast.rss,https://omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/4A0AA31F-D7EC-4EE3-915F-AE300188D2DA/554B2774-1072-4AFC-88B3-AE300188D2E8/podcast.rss,itunes_id
+63,Bill O’Reilly’s No Spin News and Analysis,https://feeds.megaphone.fm/RSV2429196838,https://feeds.megaphone.fm/RSV2429196838,itunes_id
+64,IHIP News,https://feeds.megaphone.fm/QCD4780700649,https://feeds.megaphone.fm/QCD4780700649,itunes_id
+65,Here & Now Anytime,https://feeds.npr.org/510051/podcast.xml,https://feeds.npr.org/510051/podcast.xml,itunes_id
+66,The Weeknight,https://feeds.simplecast.com/KCk0kJtW,https://feeds.simplecast.com/KCk0kJtW,itunes_id
+67,John Kiriakou's Briefing Room,https://anchor.fm/s/114b46b70/podcast/rss,https://anchor.fm/s/114b46b70/podcast/rss,itunes_id
+68,The Matt Walsh Show,https://rss.pdrl.fm/1fc256/feeds.megaphone.fm/BVDWV7762869899,https://feeds.megaphone.fm/BVDWV7762869899,itunes_id
+69,Democracy Now! Audio,https://www.democracynow.org/podcast.xml,https://www.democracynow.org/podcast.xml,itunes_id
+70,The World and Everything In It,https://feeds.blubrry.com/feeds/the_world_and_everything_in_it.xml,https://feeds.blubrry.com/feeds/the_world_and_everything_in_it.xml,itunes_id
+71,CNN Inside Politics,https://feeds.megaphone.fm/WMHY2364873047,https://feeds.megaphone.fm/WMHY2364873047,itunes_id
+72,The Michael Knowles Show,https://rss.pdrl.fm/34758b/feeds.megaphone.fm/BVDWV5810064903,https://feeds.megaphone.fm/BVDWV5810064903,itunes_id
+73,Connect with Jacob Soboroff,https://feeds.simplecast.com/FYI_yoVc,https://feeds.simplecast.com/FYI_yoVc,itunes_id
+74,Mo News,https://feeds.megaphone.fm/ADV8678235965,https://feeds.megaphone.fm/ADV8678235965,itunes_id
+75,Consider This from NPR,https://feeds.npr.org/510355/podcast.xml,https://feeds.npr.org/510355/podcast.xml,itunes_id
+76,"The Pour Over: Politically Neutral, Christ-First News",https://rss.pdrl.fm/9eee36/feeds.megaphone.fm/TPOR8396956007,https://feeds.megaphone.fm/TPOR8396956007,itunes_id
+77,Victor Davis Hanson: In His Own Words,https://feeds.megaphone.fm/THEDAILYSIGNAL2043100319,https://feeds.megaphone.fm/THEDAILYSIGNAL2043100319,itunes_id
+78,The Daily Beans,https://feeds.simplecast.com/bOogzwqU,https://feeds.simplecast.com/bOogzwqU,itunes_id
+79,FT News Briefing,https://feeds.acast.com/public/shows/73fe3ede-5c5c-4850-96a8-30db8dbae8bf,https://feeds.acast.com/public/shows/73fe3ede-5c5c-4850-96a8-30db8dbae8bf,itunes_id
+80,Lovett or Leave It,https://audioboom.com/channels/5166622.rss,https://audioboom.com/channels/5166622.rss,itunes_id
+81,The Clay Travis and Buck Sexton Show,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/57c236de-aec0-46c1-b141-ae3c00026d77/1776c4cc-50a1-410f-a2de-ae3c00026dfa/podcast.rss,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/57c236de-aec0-46c1-b141-ae3c00026d77/1776c4cc-50a1-410f-a2de-ae3c00026dfa/podcast.rss,itunes_id
+82,Al Jazeera News Updates,https://www.omnycontent.com/d/playlist/9c074afa-3313-47e8-b802-a9f900789975/63048eda-2427-408a-b47c-ad5001293fca/6677d422-fd43-4aaa-be74-ad5001293fd8/podcast.rss,https://www.omnycontent.com/d/playlist/9c074afa-3313-47e8-b802-a9f900789975/63048eda-2427-408a-b47c-ad5001293fca/6677d422-fd43-4aaa-be74-ad5001293fd8/podcast.rss,itunes_id
+83,More to the Story,https://feeds.captivate.fm/more-to-the-story/,https://feeds.captivate.fm/more-to-the-story/,itunes_id
+84,Meet the Press,https://podcastfeeds.nbcnews.com/meetthepress,https://podcastfeeds.nbcnews.com/nbc-meet-the-press,itunes_id
+85,The MeidasTouch Podcast,https://rss.amperwave.net/v2/feed/audacynetwork/16aa3c6bf526fae9db63070c73cad09f,https://rss.amperwave.net/v2/feed/audacynetwork/16aa3c6bf526fae9db63070c73cad09f,itunes_id
+86,CBS Evening News,https://rss.amperwave.net/v2/feed/audacynetwork/184be2eb5370dc55d0c4631c8f49fd50,https://rss.amperwave.net/v2/feed/audacynetwork/184be2eb5370dc55d0c4631c8f49fd50,itunes_id
+88,Mark Levin Podcast,https://feeds.megaphone.fm/mark-levin-podcast,https://feeds.megaphone.fm/mark-levin-podcast,itunes_id
+89,WSJ Tech News Briefing,https://video-api.shdsvc.dowjones.io/api/podcasts/feed/the%20wall%20street%20journal%20tech%20talk,https://video-api.shdsvc.dowjones.io/api/podcasts/feed/the%20wall%20street%20journal%20tech%20talk,itunes_id
+90,House of Troy,https://feeds.simplecast.com/SRHVlKvw,https://feeds.simplecast.com/SRHVlKvw,itunes_id
+91,Morning Brief,https://feeds.captivate.fm/et-morning-brief/,https://feeds.captivate.fm/et-morning-brief/,itunes_id
+93,The NewsWorthy,https://rss.libsyn.com/shows/104623/destinations/560482.xml,https://thenewsworthy.libsyn.com/rss,itunes_id
+94,Claude AI Daily,https://media.rss.com/claude-ai-daily/feed.xml,https://media.rss.com/claude-ai-daily/feed.xml,itunes_id
+95,The Morgan Stewart Show,https://feeds.simplecast.com/BbxEWNSo,https://feeds.simplecast.com/BbxEWNSo,itunes_id
+96,The New York Times Narrated,https://feeds.simplecast.com/WHvRQ7B1,https://feeds.simplecast.com/WHvRQ7B1,itunes_id
+97,ABC News Update,https://feeds.megaphone.fm/ESP9792844572,https://feeds.megaphone.fm/ESP9792844572,itunes_id
+98,Part Of The Problem,https://rss.art19.com/part-of-the-problem,https://rss.art19.com/part-of-the-problem,itunes_id
+99,Armstrong & Getty On Demand,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/0516ff28-c0d6-492a-b264-ae3900375fc8/4db37684-c7ed-4964-843c-ae3900375fd7/podcast.rss,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/0516ff28-c0d6-492a-b264-ae3900375fc8/4db37684-c7ed-4964-843c-ae3900375fd7/podcast.rss,itunes_id
+100,Rabbit Hole,https://feeds.simplecast.com/rRMR9QHI,https://feeds.simplecast.com/oCXij9l2,itunes_id
+101,The Future of Everything,https://feeds.simplecast.com/Y8_HoeNW,https://feeds.simplecast.com/Y8_HoeNW,itunes_id
+102,Bloomberg Tech,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/41764a4f-fc64-4e11-89ba-ae7c0030ab5e/9caafc41-289c-4115-995d-ae7c0030ab75/podcast.rss,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/41764a4f-fc64-4e11-89ba-ae7c0030ab5e/9caafc41-289c-4115-995d-ae7c0030ab75/podcast.rss,itunes_id
+103,TED Tech,https://feeds.acast.com/public/shows/67585c62102e6d4448d44969,https://feeds.feedburner.com/iTunesPodcastTTTechnology,itunes_id
+104,This Week in Tech (Audio),https://feeds.twit.tv/twit.xml,https://feeds.twit.tv/twit.xml,itunes_id
+105,Machine Gods,https://feeds.npr.org/g-s1-143588/podcast.xml,https://feeds.npr.org/g-s1-143588/podcast.xml,itunes_id
+106,What's New,https://feeds.megaphone.fm/CNE9949763468,https://feeds.megaphone.fm/CNE9949763468,itunes_id
+107,Elon Musk Podcast,https://anchor.fm/s/da3296d4/podcast/rss,https://anchor.fm/s/da3296d4/podcast/rss,itunes_id
+108,Tech Life,https://podcasts.files.bbci.co.uk/p01plr2p.rss,https://podcasts.files.bbci.co.uk/p01plr2p.rss,itunes_id
+109,A Beginner's Guide to AI,https://feeds.acast.com/public/shows/6953b9ead0c0aeaf12bcbd70,https://feeds.acast.com/public/shows/6953b9ead0c0aeaf12bcbd70,itunes_id
+110,TechCrunch Daily Crunch,https://feeds.megaphone.fm/techcrunch-daily-crunch,https://feeds.megaphone.fm/techcrunch-daily-crunch,itunes_id
+111,Hard Fork,https://feeds.simplecast.com/6HKOhNgS,https://feeds.simplecast.com/l2i9YnTd,itunes_id
+112,Uncanny Valley | WIRED,https://feeds.megaphone.fm/CNE6423132305,https://feeds.megaphone.fm/CNE6423132305,itunes_id
+113,Last Week in AI,https://rss.art19.com/last-week-in-ai,https://rss.art19.com/last-week-in-ai,itunes_id
+114,NVIDIA AI Podcast,https://feeds.megaphone.fm/nvidiaaipodcast,https://feeds.megaphone.fm/nvidiaaipodcast,itunes_id
+115,The AI in Business Podcast,https://rss.libsyn.com/shows/45920/destinations/151434.xml,https://techemergence.libsyn.com/rss,itunes_id
+117,Lex Fridman Podcast,https://lexfridman.com/feed/podcast/,https://lexfridman.com/feed/podcast/,itunes_id
+118,Deep In Tech,https://rss.buzzsprout.com/2522747.rss,https://rss.buzzsprout.com/2522747.rss,itunes_id
+119,Acquired,https://feeds.transistor.fm/acquired,https://feeds.transistor.fm/acquired,itunes_id
+120,"All-In with Chamath, Jason, Sacks & Friedberg",https://rss.libsyn.com/shows/254861/destinations/1928300.xml,https://allinchamathjason.libsyn.com/rss,itunes_id
+121,The TED AI Show,https://feeds.acast.com/public/shows/6758564a102e6d4448d19589,https://feeds.acast.com/public/shows/6758564a102e6d4448d19589,itunes_id
+122,Claude AI Genius Podcast,https://rss.libsyn.com/shows/76020/destinations/338267.xml,https://theblogmillionaire.libsyn.com/rss,itunes_id
+123,TED Radio Hour,https://feeds.npr.org/510298/podcast.xml,https://feeds.npr.org/510298/podcast.xml,itunes_id
+124,The Next Wave - AI and The Future of Technology,https://feeds.megaphone.fm/thenextwave,https://feeds.megaphone.fm/thenextwave,itunes_id
+125,Artificial Intelligence Masterclass,https://feeds.megaphone.fm/ai-masterclass,https://feeds.megaphone.fm/ai-masterclass,itunes_id
+129,Darknet Diaries,https://podcast.darknetdiaries.com,https://podcast.darknetdiaries.com,itunes_id
+130,Search Engine,https://rss.amperwave.net/v2/feed/audacynetwork/search-engine,https://rss.amperwave.net/v2/feed/audacynetwork/search-engine,itunes_id
+131,"AI For Humans: Weekly AI News, Tools & Trends",https://rss.libsyn.com/shows/469701/destinations/3976203.xml,https://feeds.libsyn.com/469701/rss,itunes_id
+132,硅谷101,https://feeds.fireside.fm/sv101/rss,https://feeds.fireside.fm/sv101/rss,itunes_id
+133,The AI Daily Brief: Artificial Intelligence News and Analysis,https://anchor.fm/s/f7cac464/podcast/rss,https://anchor.fm/s/f7cac464/podcast/rss,itunes_id
+134,Dwarkesh Podcast,https://apple.dwarkesh-podcast.workers.dev/feed.rss,https://api.substack.com/feed/podcast/69345.rss,itunes_id
+135,AI Business Daily,https://feeds.simplecast.com/KH15z61n,https://feeds.simplecast.com/KH15z61n,itunes_id
+136,Lenny's Podcast: Product | Career | Growth,https://api.substack.com/feed/podcast/10845.rss,https://api.substack.com/feed/podcast/10845.rss,itunes_id
+138,Deep Questions with Cal Newport,https://rss.pdrl.fm/2d4b16/feeds.simplecast.com/_IjaDYAj,https://rss.pdrl.fm/2d4b16/feeds.simplecast.com/_IjaDYAj,itunes_id
+139,Speak to an Agent,https://feeds.transistor.fm/speak-to-an-agent,https://feeds.transistor.fm/speak-to-an-agent,itunes_id
+141,Apple Events,https://rss.art19.com/apple-events,https://rss.art19.com/apple-events,itunes_id
+142,Better Offline,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/cf0c25ad-cf01-4da5-ae1c-b0fc015f790e/53ed270b-7147-4f70-81c2-b0fc015fe4ed/podcast.rss,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/cf0c25ad-cf01-4da5-ae1c-b0fc015f790e/53ed270b-7147-4f70-81c2-b0fc015fe4ed/podcast.rss,itunes_id
+143,Big Technology Podcast,https://feeds.megaphone.fm/LI3617121267,https://feeds.megaphone.fm/LI3617121267,itunes_id
+144,Practical AI,https://feeds.transistor.fm/practical-ai-machine-learning-data-science-llm,https://feeds.transistor.fm/practical-ai-machine-learning-data-science-llm,itunes_id
+145,Decoder with Nilay Patel,https://feeds.megaphone.fm/recodedecode,https://feeds.megaphone.fm/recodedecode,itunes_id
+146,"Me, Myself, and AI",https://feeds.megaphone.fm/TPG7603691495,https://feeds.megaphone.fm/TPG7603691495,itunes_id
+147,American Alchemy with Jesse Michels,https://rss.pdrl.fm/d763df/feeds.megaphone.fm/jessemichels,https://feeds.megaphone.fm/jessemichels,itunes_id
+148,Galaxy Brain,https://feeds.megaphone.fm/galaxybrain,https://feeds.megaphone.fm/galaxybrain,itunes_id
+149,OpenAI Podcast,https://feeds.acast.com/public/shows/68470ba8d911dedd6501609c,https://feeds.acast.com/public/shows/68470ba8d911dedd6501609c,itunes_id
+150,TBPN,https://feeds.transistor.fm/technology-brother,https://feeds.transistor.fm/technology-brother,itunes_id
+151,The Knowledge Project,https://feeds.megaphone.fm/FSMI7575968096,https://feeds.megaphone.fm/FSMI7575968096,itunes_id
+152,How I AI,https://anchor.fm/s/1035b1568/podcast/rss,https://anchor.fm/s/1035b1568/podcast/rss,itunes_id
+153,What Bitcoin Did,https://feeds.fountain.fm/UZSKQcrOnhqYS1JopxGg,https://feeds.fountain.fm/UZSKQcrOnhqYS1JopxGg,itunes_id
+154,Waveform: The MKBHD Podcast,https://feeds.megaphone.fm/STU4418364045,https://feeds.megaphone.fm/STU4418364045,itunes_id
+155,Reply All,https://feeds.megaphone.fm/replyall,https://feeds.megaphone.fm/replyall,itunes_id
+156,Software Engineering Daily,https://softwareengineeringdaily.com/feed/podcast/,https://softwareengineeringdaily.com/feed/podcast/,itunes_id
+157,The Power On Podcast,https://anchor.fm/s/14da52f0/podcast/rss,https://anchor.fm/s/14da52f0/podcast/rss,itunes_id
+158,AIAA Up Next with Clay Mowry,https://rss.buzzsprout.com/2635451.rss,https://rss.buzzsprout.com/2635451.rss,itunes_id
+159,Everyday AI Podcast – An AI and ChatGPT Podcast,https://rss.buzzsprout.com/2175779.rss,https://rss.buzzsprout.com/2175779.rss,itunes_id
+160,No Priors: Artificial Intelligence | Technology | Startups,https://feeds.megaphone.fm/nopriors,https://feeds.megaphone.fm/nopriors,itunes_id
+161,Bankless,https://feeds.flightcast.com/p83fuj0y0u58o82l41xei7zo.xml,https://feeds.flightcast.com/p83fuj0y0u58o82l41xei7zo.xml,itunes_id
+163,Bold Names,https://feeds.simplecast.com/zJQEz425,https://feeds.simplecast.com/zJQEz425,itunes_id
+164,The Kim Komando Show,https://feeds.megaphone.fm/WSMM3014080557,https://feeds.megaphone.fm/WSMM3014080557,itunes_id
+165,TFTC: A Bitcoin Podcast,https://feeds.fountain.fm/ZwwaDULvAj0yZvJ5kdB9,https://feeds.fountain.fm/ZwwaDULvAj0yZvJ5kdB9,itunes_id
+166,Monopolizer: Big Ideas in Antitrust,https://api.riverside.com/hosting/WYnx5HgU.rss,https://api.riverside.com/hosting/WYnx5HgU.rss,itunes_id
+167,Security Now (Audio),https://feeds.twit.tv/sn.xml,https://feeds.twit.tv/sn.xml,itunes_id
+168,TED Radio Hour,https://www.spreaker.com/show/7373686/episodes/feed,https://www.spreaker.com/show/7373686/episodes/feed,itunes_id
+169,MacBreak Weekly (Audio),https://feeds.twit.tv/mbw.xml,https://feeds.twit.tv/mbw.xml,itunes_id
+171,The Last Invention,https://feeds.megaphone.fm/thelastinvention,https://feeds.megaphone.fm/thelastinvention,itunes_id
+172,罗永浩的十字路口,https://feed.xyzfm.space/wmnkvmrpwuww,https://feed.xyzfm.space/wmnkvmrpwuww,itunes_id
+173,The Moonshot Podcast,https://feeds.megaphone.fm/moonshot,https://feeds.megaphone.fm/moonshot,itunes_id
+174,9to5Mac Daily,https://feedpress.me/9to5macdaily,https://feedpress.me/9to5macdaily,itunes_id
+175,AI Agents Podcast,https://anchor.fm/s/fe2628e4/podcast/rss,https://anchor.fm/s/fe2628e4/podcast/rss,itunes_id
+176,Your Undivided Attention,https://feeds.simplecast.com/rZ0cYk12,https://feeds.simplecast.com/rZ0cYk12,itunes_id
+177,AI for Beginners (400 episodes),https://feeds.acast.com/public/shows/6aaaab7c4cef87591d3bc527,https://feeds.acast.com/public/shows/6aaaab7c4cef87591d3bc527,itunes_id
+178,"Tomorrow, Today",https://feeds.simplecast.com/tj_igLD4,https://feeds.simplecast.com/tj_igLD4,itunes_id
+179,AI + a16z,https://feeds.simplecast.com/Hb_IuXOo,https://feeds.simplecast.com/Hb_IuXOo,itunes_id
+180,Bitcoin for Millennials,https://anchor.fm/s/e82b7a08/podcast/rss,https://anchor.fm/s/e82b7a08/podcast/rss,itunes_id
+181,The Anthropic AI Daily Brief,https://feeds.podcastai.com/6KBha9KI2a95IejKjkdjud.xml,https://feeds.podcastai.com/6KBha9KI2a95IejKjkdjud.xml,itunes_id
+182,The Artificial Intelligence Show,https://feeds.megaphone.fm/marketingai,https://feeds.megaphone.fm/marketingai,itunes_id
+183,The AI News Daily Brief,https://feeds.podcastai.com/lzSp5oGSGEaLNzHdqUBaTh.xml,https://feeds.podcastai.com/lzSp5oGSGEaLNzHdqUBaTh.xml,itunes_id
+184,The 404 Media Podcast,https://feeds.megaphone.fm/TBIEA2761282490,https://feeds.megaphone.fm/TBIEA2761282490,itunes_id
+185,The Neuron: AI Explained,https://anchor.fm/s/f51d3fd0/podcast/rss,https://anchor.fm/s/f51d3fd0/podcast/rss,itunes_id
+186,AppleInsider Podcast,https://feeds.transistor.fm/appleinsider,https://feeds.transistor.fm/appleinsider,itunes_id
+187,The Twenty Minute VC (20VC): Venture Capital | Startup Funding | The Pitch,https://rss.libsyn.com/shows/61840/destinations/240976.xml,https://thetwentyminutevc.libsyn.com/rss,itunes_id
+188,The MacRumors Show,https://audioboom.com/channels/5096144.rss,https://audioboom.com/channels/5096144.rss,itunes_id
+189,"Inside AsembleAI: DeepTech, AI & Science",https://media.rss.com/asemble-mac-and-sam/feed.xml,https://media.rss.com/asemble-mac-and-sam/feed.xml,itunes_id
+190,The Paul Barron Crypto Show,https://www.spreaker.com/show/4747781/episodes/feed,https://www.spreaker.com/show/4747781/episodes/feed,itunes_id
+191,Well There‘s Your Problem,https://feed.podbean.com/wtyppod/feed.xml,https://feedcdn.podbean.com/wtyppod/feed.xml,itunes_id
+192,AI Daily Briefing,https://www.lanternpodcasts.com/topfive/podcast/ai-daily-briefing/feed.xml,https://www.lanternpodcasts.com/topfive/podcast/ai-daily-briefing/feed.xml,itunes_id
+193,"""The Cognitive Revolution""",https://feeds.megaphone.fm/RINTP3108857801,https://feeds.megaphone.fm/RINTP3108857801,itunes_id
+194,The Pragmatic Engineer,https://api.substack.com/feed/podcast/458709.rss,https://api.substack.com/feed/podcast/458709.rss,itunes_id
+195,Tech Won't Save Us,https://rss.buzzsprout.com/1004689.rss,https://rss.buzzsprout.com/1004689.rss,itunes_id
+196,The Room Podcast,https://feeds.simplecast.com/aPz9Qkq6,https://feeds.simplecast.com/aPz9Qkq6,itunes_id
+197,Building AI Boston,https://feeds.megaphone.fm/CSN8756441179,https://feeds.megaphone.fm/CSN8756441179,itunes_id
+198,TED Business,https://feeds.acast.com/public/shows/675727607205a5bc68e57057,https://feeds.feedburner.com/iTunesPodcastTTBusiness,itunes_id
+199,The Diary Of A CEO with Steven Bartlett,https://rss2.flightcast.com/xmsftuzjjykcmqwolaqn6mdn,https://rss2.flightcast.com/xmsftuzjjykcmqwolaqn6mdn,itunes_id
+200,Masters in Business,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/4e4cd910-40a1-4619-a5f3-ae2b0012ffff/5873a3cb-298f-40bc-b71f-ae2b0013000d/podcast.rss,http://feeds.bloomberg.fm/BLM8864403288,itunes_id
+202,"She's Just Getting Started: Starting a business, pursuing your passion, make money doing what you love❤️",https://rss.buzzsprout.com/549886.rss,https://rss.buzzsprout.com/549886.rss,itunes_id
+203,Economics Explained,https://feeds.megaphone.fm/ARML8374689970,https://feeds.megaphone.fm/ARML8374689970,itunes_id
+204,The Economics of Everyday Things,https://feeds.simplecast.com/ob9OSBIN,https://feeds.simplecast.com/ob9OSBIN,itunes_id
+205,"Rich Dad Radio Show: In-Your-Face Advice on Investing, Personal Finance, & Starting a Business",https://rss.libsyn.com/shows/585625/destinations/5081130.xml,https://feeds.libsyn.com/585625/rss,itunes_id
+206,Morning Brew Daily,https://feeds.megaphone.fm/MOBI8777994188,https://feeds.megaphone.fm/MOBI8777994188,itunes_id
+207,Business Daily,https://podcasts.files.bbci.co.uk/p002vsxs.rss,https://podcasts.files.bbci.co.uk/p002vsxs.rss,itunes_id
+208,Money Stuff: The Podcast,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/ee4336cb-155f-4488-90e0-b1400134e40e/77e6a3a7-290d-4a82-8164-b14001353ef2/podcast.rss,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/ee4336cb-155f-4488-90e0-b1400134e40e/77e6a3a7-290d-4a82-8164-b14001353ef2/podcast.rss,itunes_id
+209,The Psychology of Money with Morgan Housel,https://anchor.fm/s/104219ecc/podcast/rss,https://anchor.fm/s/104219ecc/podcast/rss,itunes_id
+210,HBR On Leadership,https://feeds.feedburner.com/harvardbusiness/on-leadership,https://feeds.feedburner.com/harvardbusiness/on-leadership,url
+211,The Alex Hormozi’s Podcast,https://feed.podbean.com/alexhormozi/feed.xml,https://feed.podbean.com/alexhormozi/feed.xml,itunes_id
+212,Make Me Smart,https://feeds.publicradio.org/public_feeds/make-me-smart,https://feeds.publicradio.org/public_feeds/make-me-smart,itunes_id
+213,Business Breakdowns,https://feeds.megaphone.fm/breakdowns,https://feeds.megaphone.fm/breakdowns,itunes_id
+214,How I Built This with Guy Raz,https://rss.art19.com/how-i-built-this,https://rss.art19.com/how-i-built-this,itunes_id
+215,Wall Street Breakfast,https://www.spreaker.com/show/5725002/episodes/feed,https://www.spreaker.com/show/5725002/episodes/feed,itunes_id
+216,Bloomberg Businessweek,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/3b082bbf-691d-443b-bc59-ae2b0012ff93/9222076a-d22a-4a9f-9d26-ae2b0012ffb4/podcast.rss,http://feeds.bloomberg.fm/BLM6442452948,itunes_id
+217,Erotic Stories,https://feeds.acast.com/public/shows/6930dc64042629ee0ec70413,https://feeds.acast.com/public/shows/6930dc64042629ee0ec70413,itunes_id
+218,Business History,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/7f3d9150-a284-4eb5-afdd-b36b012c131c/d0eda9ea-f1f7-4dbc-aeac-b36b012c1726/podcast.rss,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/7f3d9150-a284-4eb5-afdd-b36b012c131c/d0eda9ea-f1f7-4dbc-aeac-b36b012c1726/podcast.rss,itunes_id
+219,Financial Feminist,https://feeds.megaphone.fm/ADL7662808451,https://feeds.megaphone.fm/ADL7662808451,itunes_id
+220,PBD Podcast,https://anchor.fm/s/2fa50a94/podcast/rss,https://anchor.fm/s/2fa50a94/podcast/rss,itunes_id
+221,Planet Money,https://feeds.npr.org/510289/podcast.xml,https://feeds.npr.org/510289/podcast.xml,itunes_id
+222,Business English from All Ears English,https://feeds.megaphone.fm/ALLE3395867426,https://feeds.megaphone.fm/ALLE3395867426,itunes_id
+223,Inside Blackstone,https://feed.podbean.com/insideblackstone/feed.xml,https://feed.podbean.com/insideblackstone/feed.xml,itunes_id
+224,"Dirt, Dollars &amp; Decisions",https://anchor.fm/s/1160dfa54/podcast/rss,https://anchor.fm/s/1160dfa54/podcast/rss,itunes_id
+225,WSJ Minute Briefing,https://video-api.shdsvc.dowjones.io/api/podcasts/feed/wsj%20minute%20briefing,https://feeds.simplecast.com/1GoCgj5h,itunes_id
+226,7 Minute Leadership,https://www.spreaker.com/show/1720272/episodes/feed,https://www.spreaker.com/show/1720272/episodes/feed,itunes_id
+227,Bloomberg Intelligence,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/7f534b8c-9e91-429a-b102-ae3c00090c6d/0ad812bf-fd15-4012-a18c-ae3c00090c76/podcast.rss,http://feeds.bloomberg.fm/BLM2236960495,itunes_id
+228,Working Hard with Grace Beverley,https://feeds.acast.com/public/shows/a8b08796-03e4-48c3-9531-3229de80d9ea,https://feeds.acast.com/public/shows/a8b08796-03e4-48c3-9531-3229de80d9ea,itunes_id
+229,The Best Idea Yet,https://rss.art19.com/the-best-idea-yet,https://rss.art19.com/the-best-idea-yet,itunes_id
+230,Marketplace,https://feeds.publicradio.org/public_feeds/marketplace,https://feeds.publicradio.org/public_feeds/marketplace,itunes_id
+231,The Markets,https://feeds.megaphone.fm/GLD9322922848,https://feeds.megaphone.fm/GLD9322922848,itunes_id
+232,The Ryan Leak Podcast,https://anchor.fm/s/297b36c0/podcast/rss,https://anchor.fm/s/297b36c0/podcast/rss,itunes_id
+233,Exchanges,https://feeds.megaphone.fm/GLD9218176758,https://feeds.megaphone.fm/GLD9218176758,itunes_id
+234,Money Rehab with Nicole Lapin,https://feeds.megaphone.fm/TPG1669083856,https://feeds.megaphone.fm/TPG1669083856,itunes_id
+235,Business of Home Podcast,https://feeds.simplecast.com/FMUd4fE9,https://feeds.simplecast.com/FMUd4fE9,itunes_id
+236,HBR IdeaCast,http://feeds.harvardbusiness.org/harvardbusiness/ideacast,http://feeds.harvardbusiness.org/harvardbusiness/ideacast,itunes_id
+237,The Indicator from Planet Money,https://feeds.npr.org/510325/podcast.xml,https://feeds.npr.org/510325/podcast.xml,itunes_id
+238,Meditation for Sleep,https://rss.pdrl.fm/1af6fe/feeds.libsyn.com/546977/rss/?redirect=false,https://feeds.libsyn.com/546977/rss,itunes_id
+239,Jordan B Peterson,https://feed.podbean.com/jordanbpeterson/feed.xml,https://feed.podbean.com/jordanbpeterson/feed.xml,itunes_id
+240,Moonshots with Peter Diamandis,https://feeds.megaphone.fm/DVVTS2890392624,https://feeds.megaphone.fm/DVVTS2890392624,itunes_id
+241,Business Movers,https://rss.art19.com/business-movers,https://rss.art19.com/business-movers,itunes_id
+243,Closing Bell,https://feeds.simplecast.com/Nh1wIaXT,https://feeds.simplecast.com/Nh1wIaXT,itunes_id
+245,Natalie Brunell's Coin Stories,https://feeds.simplecast.com/760kY6cd,https://feeds.libsyn.com/344543/rsscoin,itunes_id
+246,Smart Money Happy Hour with Rachel Cruze and George Kamel,https://feeds.megaphone.fm/smartmoneyhappyhour,https://feeds.megaphone.fm/smartmoneyhappyhour,itunes_id
+247,Speak Up: Develop Your Executive Presence & Leadership Communication Style,https://feeds.captivate.fm/speak-up-with-laura/,https://feeds.captivate.fm/speak-up-with-laura/,itunes_id
+248,David Senra,https://feeds.megaphone.fm/david-senra,https://feeds.megaphone.fm/david-senra,itunes_id
+249,Andy Stanley Leadership Podcast,https://www.omnycontent.com/d/playlist/13ef36f9-b947-4bf3-ba70-a8260147fab8/13443b64-a0d3-4679-b3b2-aa3200cde8cc/fc48640f-7800-4ec5-93dc-aa3200cde8da/podcast.rss,https://www.omnycontent.com/d/playlist/13ef36f9-b947-4bf3-ba70-a8260147fab8/13443b64-a0d3-4679-b3b2-aa3200cde8cc/fc48640f-7800-4ec5-93dc-aa3200cde8da/podcast.rss,itunes_id
+250,Bloomberg Daybreak: US Edition,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/d15648c4-cee0-4e99-a5ca-af80014d921d/65ce2954-d8a8-4c66-9f42-af80014d923e/podcast.rss,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/d15648c4-cee0-4e99-a5ca-af80014d921d/65ce2954-d8a8-4c66-9f42-af80014d923e/podcast.rss,itunes_id
+252,The Leila Hormozi’s Podcast,https://feed.podbean.com/leilahormozi/feed.xml,https://feed.podbean.com/leilahormozi/feed.xml,itunes_id
+254,Vanessa Van Edwards,https://feeds.megaphone.fm/vanessa-van-edwards,https://feeds.megaphone.fm/vanessa-van-edwards,itunes_id
+255,Stock Market Today With IBD,https://feeds.simplecast.com/QeVni9a0,https://feeds.simplecast.com/QeVni9a0,itunes_id
+256,Tom Bilyeu's Impact Theory,https://rss.pdrl.fm/02d1c6/rss.art19.com/tom-bilyeus-impact-theory,https://rss.pdrl.fm/02d1c6/art19.com/shows/tom-bilyeus-impact-theory,itunes_id
+257,WSJ's Take On the Week,https://video-api.shdsvc.dowjones.io/api/podcasts/feed/take%20on%20the%20week,https://feeds.simplecast.com/4LDzav57,itunes_id
+258,The Business of Fashion Podcast,https://feeds.acast.com/public/shows/6355d904dd5e0e0012da88d1,https://feeds.acast.com/public/shows/6355d904dd5e0e0012da88d1,itunes_id
+259,Life Kit: Money,https://feeds.npr.org/510341/podcast.xml,https://feeds.npr.org/510341/podcast.xml,itunes_id
+260,Marketplace Morning Report,https://feeds.publicradio.org/public_feeds/marketplace-morning-report,https://feeds.publicradio.org/public_feeds/marketplace-morning-report,itunes_id
+261,Biblical Business Podcast,https://api.riverside.com/hosting/DQBVaKbH.rss,https://api.riverside.com/hosting/DQBVaKbH.rss,itunes_id
+262,Barn Talk,https://feeds.megaphone.fm/TAMTD8073577965,https://feeds.megaphone.fm/TAMTD8073577965,itunes_id
+263,WSJ Your Money Briefing,https://video-api.shdsvc.dowjones.io/api/podcasts/feed/the%20wall%20street%20journals%20your%20money%20matters,https://feeds.simplecast.com/VYCXJ_UH,itunes_id
+265,Side Hustle School,https://feeds.acast.com/public/shows/69ea8529d2febdbec932a7b2,https://feeds.acast.com/public/shows/69ea8529d2febdbec932a7b2,url
+266,Unblinded with Sean Callagy,https://anchor.fm/s/10a340624/podcast/rss,https://anchor.fm/s/10a340624/podcast/rss,itunes_id
+267,The Dr. John Delony Show’s Podcast,https://feed.podbean.com/thedrjohndelonyshow1/feed.xml,https://feed.podbean.com/thedrjohndelonyshow1/feed.xml,itunes_id
+268,The Day Trading Show,https://anchor.fm/s/ce306c8/podcast/rss,https://anchor.fm/s/ce306c8/podcast/rss,itunes_id
+269,Sales School with Jordan Belfort,https://anchor.fm/s/38fa8e34/podcast/rss,https://anchor.fm/s/38fa8e34/podcast/rss,itunes_id
+270,Make Life Count,https://api.riverside.com/hosting/OJNsCD2p.rss,https://api.riverside.com/hosting/OJNsCD2p.rss,itunes_id
+271,The Best One Yet,https://feeds.acast.com/public/shows/69545da8cb029db7575279fc,https://feeds.acast.com/public/shows/69545da8cb029db7575279fc,itunes_id
+272,Money Talks from The Economist,https://access.acast.com/rss/39fc4a99-8861-437d-81e2-684d13e48f92,https://access.acast.com/rss/39fc4a99-8861-437d-81e2-684d13e48f92,itunes_id
+273,Designed in California,https://relay.fm/designed/feed,https://relay.fm/designed/feed,itunes_id
+274,This Is Uncomfortable,https://feeds.publicradio.org/public_feeds/this-is-uncomfortable,https://feeds.publicradio.org/public_feeds/this-is-uncomfortable,itunes_id
+275,Marketplace All-in-One,https://feeds.publicradio.org/public_feeds/marketplace-all-in-one,https://feeds.publicradio.org/public_feeds/marketplace-all-in-one,itunes_id
+276,Wall Street Week,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/3441857d-10f0-47c5-991f-ae3c0021f233/9040f928-9636-419d-8ac6-ae3c0021f241/podcast.rss,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/3441857d-10f0-47c5-991f-ae3c0021f233/9040f928-9636-419d-8ac6-ae3c0021f241/podcast.rss,itunes_id
+277,Figuring Out with Raj Shamani,https://anchor.fm/s/f5347ab0/podcast/rss,https://anchor.fm/s/f5347ab0/podcast/rss,itunes_id
+278,Kudlow,https://feeds.megaphone.fm/FOXM1491832298,https://feeds.megaphone.fm/FOXM1491832298,itunes_id
+279,The Economics Show,https://feeds.acast.com/public/shows/664394a442f6710013618119,https://feeds.acast.com/public/shows/664394a442f6710013618119,itunes_id
+281,Barclays Brief,https://feeds.captivate.fm/barclays-brief/,https://feeds.captivate.fm/barclays-brief/,itunes_id
+283,Lemonade Stand,https://feeds.megaphone.fm/VMP5629614579,https://feeds.megaphone.fm/VMP5629614579,itunes_id
+284,How We Got Here with Chris Kohler,https://feeds.megaphone.fm/PCPYT5250832734,https://feeds.megaphone.fm/PCPYT5250832734,itunes_id
+285,Power Lunch,https://feeds.simplecast.com/_qvRgwME,https://feeds.simplecast.com/_qvRgwME,itunes_id
+286,Unchained,https://feeds.megaphone.fm/LSHML4761942757,https://feeds.megaphone.fm/LSHML4761942757,itunes_id
+287,Corporate Gossip,https://feeds.megaphone.fm/YAP3664118540,https://feeds.megaphone.fm/YAP3664118540,itunes_id
+288,Erotic Stories,https://www.spreaker.com/show/6870129/episodes/feed,https://www.spreaker.com/show/6870129/episodes/feed,podcast_guid
+289,Open Residency,https://anchor.fm/s/ffafb5b8/podcast/rss,https://anchor.fm/s/ffafb5b8/podcast/rss,itunes_id
+290,Everybody's Business,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/f541f9b4-77cb-45aa-bf94-b1d300e5d357/1d448cb7-e0fc-45b8-b51f-b1d300e623a7/podcast.rss,https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/f541f9b4-77cb-45aa-bf94-b1d300e5d357/1d448cb7-e0fc-45b8-b51f-b1d300e623a7/podcast.rss,itunes_id
+291,Financial Advisor Success,https://rss.libsyn.com/shows/83727/destinations/395010.xml,https://fasuccess.libsyn.com/rss,itunes_id
+292,How We Survive,https://feeds.publicradio.org/public_feeds/how-we-survive,https://feeds.publicradio.org/public_feeds/how-we-survive,itunes_id
+293,The Art of Communication,https://rss.buzzsprout.com/279562.rss,https://rss.buzzsprout.com/279562.rss,itunes_id
+294,MFCEO Project,https://feed.podbean.com/Angeltaylor044/feed.xml,https://feed.podbean.com/Angeltaylor044/feed.xml,url
+295,Don't Suck At Sales,https://anchor.fm/s/dffd2fc0/podcast/rss,https://anchor.fm/s/dffd2fc0/podcast/rss,itunes_id
+296,Raj Shamani - Figuring Out,https://feeds.hubhopper.com/5dbf44cce7f33b25a7cf2f466204e035.rss,https://feeds.hubhopper.com/5dbf44cce7f33b25a7cf2f466204e035.rss,itunes_id
+297,Crime Junkie,https://feeds.simplecast.com/qm_9xx0g,https://feeds.simplecast.com/qm_9xx0g,itunes_id
+298,Dateline NBC,https://podcastfeeds.nbcnews.com/dateline,https://podcastfeeds.nbcnews.com/dateline-nbc,itunes_id
+299,Someone Knows Something,https://www.cbc.ca/podcasting/includes/sks.xml,https://www.cbc.ca/podcasting/includes/sks.xml,itunes_id
+300,Serial Killer: A True Crime Podcast,https://anchor.fm/s/983887c0/podcast/rss,https://anchor.fm/s/983887c0/podcast/rss,itunes_id

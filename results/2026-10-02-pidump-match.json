@@ -1,0 +1,251 @@
+{
+  "shows": 300,
+  "matched": 278,
+  "matched_by": {
+    "itunes_id": 274,
+    "podcast_guid": 1,
+    "url": 3
+  },
+  "ambiguous": 8,
+  "unmatched": 14,
+  "matched_to_more_than_one_dump_row": 0,
+  "dump_url_differs_from_our_feed_url": 40,
+  "of_which_dump_url_new_to_us": 40,
+  "dead_in_dump": 0,
+  "unmatched_with_same_title_in_dump": 3,
+  "examples": {
+    "moved": [
+      {
+        "show_id": 8,
+        "title": "WSJ What’s News",
+        "ours": "https://video-api.shdsvc.dowjones.io/api/podcasts/feed/the%20wall%20street%20journal%20whats%20news",
+        "dump": "https://feeds.simplecast.com/BA5QWI2p",
+        "dump_url_already_known_to_us": false
+      },
+      {
+        "show_id": 13,
+        "title": "The Rachel Maddow Show",
+        "ours": "https://feeds.simplecast.com/LU_7w7GU",
+        "dump": "https://podcastfeeds.nbcnews.com/msnbc-rachel-maddow",
+        "dump_url_already_known_to_us": false
+      },
+      {
+        "show_id": 31,
+        "title": "Napoléon, cet inconnu",
+        "ours": "https://feeds.audiomeans.fr/feed/b825a73c-9475-4a9c-9c95-68335b837045.xml",
+        "dump": "https://www.europe1.fr/rss/podcasts/napoleon-cet-inconnu.xml",
+        "dump_url_already_known_to_us": false
+      },
+      {
+        "show_id": 33,
+        "title": "Why Is This Happening? The Chris Hayes Podcast",
+        "ours": "https://feeds.simplecast.com/Ftpd36Dg",
+        "dump": "https://podcastfeeds.nbcnews.com/why-is-this-happening-with-chris-hayes",
+        "dump_url_already_known_to_us": false
+      },
+      {
+        "show_id": 35,
+        "title": "WSJ Opinion: Potomac Watch",
+        "ours": "https://video-api.shdsvc.dowjones.io/api/podcasts/feed/wsj%20opinion%20potomac%20watch",
+        "dump": "https://feeds.simplecast.com/uvLfx5GI",
+        "dump_url_already_known_to_us": false
+      },
+      {
+        "show_id": 43,
+        "title": "The Parnas Perspective",
+        "ours": "https://rss.amperwave.net/v2/feed/audacynetwork/419b3f1f9c1da2d7eba34e445595e9dc",
+        "dump": "https://feeds.megaphone.fm/MTH4368798504",
+        "dump_url_already_known_to_us": false
+      },
+      {
+        "show_id": 50,
+        "title": "The Last Word with Lawrence O’Donnell",
+        "ours": "https://feeds.simplecast.com/lQR7LFLn",
+        "dump": "https://podcastfeeds.nbcnews.com/the-last-word",
+        "dump_url_already_known_to_us": false
+      },
+      {
+        "show_id": 51,
+        "title": "Morning Joe",
+        "ours": "https://feeds.simplecast.com/5EFCkAYb",
+        "dump": "https://podcastfeeds.nbcnews.com/msnbc-morning-joe",
+        "dump_url_already_known_to_us": false
+      },
+      {
+        "show_id": 53,
+        "title": "Interesting Times",
+        "ours": "https://feeds.simplecast.com/bS1LZG8m",
+        "dump": "https://feeds.simplecast.com/2xzUiHxw",
+        "dump_url_already_known_to_us": false
+      },
+      {
+        "show_id": 54,
+        "title": "NBC Nightly News with Tom Llamas",
+        "ours": "https://podcastfeeds.nbcnews.com/nightlynews",
+        "dump": "https://podcastfeeds.nbcnews.com/nbc-nightly-news",
+        "dump_url_already_known_to_us": false
+      }
+    ],
+    "dead": [],
+    "ambiguous": [
+      {
+        "show_id": 26,
+        "title": "NFL: Game Theory and Money",
+        "hits": {
+          "itunes_id": [
+            953429
+          ],
+          "url": [
+            5400159
+          ]
+        }
+      },
+      {
+        "show_id": 38,
+        "title": "The World Today",
+        "hits": {
+          "itunes_id": [
+            1127413
+          ],
+          "url": [
+            1069460
+          ]
+        }
+      },
+      {
+        "show_id": 42,
+        "title": "The Scott Jennings Podcast",
+        "hits": {
+          "itunes_id": [
+            7407732
+          ],
+          "url": [
+            4144680
+          ]
+        }
+      },
+      {
+        "show_id": 170,
+        "title": "The Every Podcast",
+        "hits": {
+          "itunes_id": [
+            6714631
+          ],
+          "podcast_guid": [
+            6714658
+          ]
+        }
+      },
+      {
+        "show_id": 242,
+        "title": "Naval",
+        "hits": {
+          "itunes_id": [
+            80382
+          ],
+          "url": [
+            8034696
+          ]
+        }
+      },
+      {
+        "show_id": 253,
+        "title": "Bloomberg Surveillance",
+        "hits": {
+          "itunes_id": [
+            928475
+          ],
+          "url": [
+            4114115
+          ]
+        }
+      },
+      {
+        "show_id": 264,
+        "title": "无人知晓",
+        "hits": {
+          "itunes_id": [
+            4187375
+          ],
+          "url": [
+            5653021
+          ]
+        }
+      },
+      {
+        "show_id": 282,
+        "title": "知行小酒馆",
+        "hits": {
+          "itunes_id": [
+            3663522
+          ],
+          "url": [
+            5488148
+          ]
+        }
+      }
+    ],
+    "unmatched": [
+      {
+        "show_id": 36,
+        "title": "CNN News",
+        "reason": "none of Apple id, podcast:guid, 1 URL(s) in the dump",
+        "same_title_in_dump": false
+      },
+      {
+        "show_id": 87,
+        "title": "College Football News Today | 2 Min News | The Daily News Now!",
+        "reason": "no podcast:guid in its feed; none of Apple id, 1 URL(s) in the dump",
+        "same_title_in_dump": false
+      },
+      {
+        "show_id": 92,
+        "title": "Brad vs Everyone",
+        "reason": "no podcast:guid in its feed; none of Apple id, 1 URL(s) in the dump",
+        "same_title_in_dump": true
+      },
+      {
+        "show_id": 116,
+        "title": "Browserverlauf",
+        "reason": "no podcast:guid in its feed; none of Apple id, 1 URL(s) in the dump",
+        "same_title_in_dump": false
+      },
+      {
+        "show_id": 126,
+        "title": "Sharp Tech with Ben Thompson",
+        "reason": "no podcast:guid in its feed; none of Apple id, 1 URL(s) in the dump",
+        "same_title_in_dump": false
+      },
+      {
+        "show_id": 127,
+        "title": "Power On with Mark Gurman",
+        "reason": "no podcast:guid in its feed; none of Apple id, 1 URL(s) in the dump",
+        "same_title_in_dump": false
+      },
+      {
+        "show_id": 128,
+        "title": "Bots Don't Cry",
+        "reason": "none of Apple id, podcast:guid, 1 URL(s) in the dump",
+        "same_title_in_dump": false
+      },
+      {
+        "show_id": 137,
+        "title": "Future Tech Pulse",
+        "reason": "none of Apple id, podcast:guid, 1 URL(s) in the dump",
+        "same_title_in_dump": false
+      },
+      {
+        "show_id": 140,
+        "title": "A Bit Personal with Jodi Shelton",
+        "reason": "no podcast:guid in its feed; none of Apple id, 1 URL(s) in the dump",
+        "same_title_in_dump": false
+      },
+      {
+        "show_id": 162,
+        "title": "Lex Fridman Podcast",
+        "reason": "no podcast:guid in its feed; none of Apple id, 1 URL(s) in the dump",
+        "same_title_in_dump": true
+      }
+    ]
+  }
+}
