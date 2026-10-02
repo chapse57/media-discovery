@@ -1,0 +1,32 @@
+{
+  "run_id": 2,
+  "seconds": "15.0",
+  "shows": 300,
+  "active": 261,
+  "with_guid": 38,
+  "with_itunes_id": 300,
+  "shows_with_more_than_one_url": 4,
+  "aliases_by_via": {
+    "new-feed-url": 4,
+    "seed": 300
+  },
+  "review_this_run": {},
+  "sources_this_run": {
+    "itunes": {
+      "requests": 6,
+      "ok": 6,
+      "not_modified": 0,
+      "redirected": 0,
+      "errors": 0,
+      "ms_total": 3799
+    },
+    "rss": {
+      "requests": 300,
+      "ok": 35,
+      "not_modified": 259,
+      "redirected": 11,
+      "errors": 6,
+      "ms_total": 165216
+    }
+  }
+}

@@ -63,6 +63,33 @@ Without a Podcast Index key the run seeds from Apple's Search API instead (`--so
 default, picks Podcast Index when `PODCASTINDEX_KEY` and `PODCASTINDEX_SECRET` are set). The
 show's `podcast:guid` then comes from its own RSS feed.
 
-## Live results
+## Live results (2026-10-02, Windows PC, Postgres 16 in Docker, 8 parallel feed fetches)
 
-Not run yet. Filled in from `run1.json` / `run2.json` after the first real run.
+Seeded from Apple's Search API (no Podcast Index key yet): the first 300 distinct shows from four
+searches (news, technology, business, true crime; US store), then Apple Lookup for all 300 ids
+(2 calls). Then the same command again. Raw output: [`results/`](results/).
+
+| | Run 1 (seed) | Run 2 (same command again) |
+|---|---:|---:|
+| Shows in the store | 300 | 300 |
+| New shows | (seed) | **0** |
+| Feeds fetched | 300 | 300 |
+| ... full download (200) | 294 | 35 |
+| ... not modified (304, ETag / Last-Modified) | 0 | **259** |
+| ... errors (unreachable, 4xx/5xx) | 6 | 6 |
+| ... answered with a redirect | 7 | 11 |
+| Shows moved by `itunes:new-feed-url`, linked to the same row | **4** | 0 (already linked) |
+| Permanent redirects to a *different* address | 0 | 0 |
+| Review items opened | 4 moved, 2 title differs from Apple's, 1 ambiguous | **0** |
+| Feed fetch time, summed over the 8 workers | 1,372 s | 165 s |
+| Apple API calls | 6 | 6 |
+
+Of the 300 shows, 261 had an episode in the last 90 days, and only 38 (13%) carry `podcast:guid`
+in their feed, so for most shows the URL history and the Apple id are what keep them one row.
+The 7 to 11 redirects were all either temporary or to the same address (for example `http` to
+`https`), which the URL key already treats as one. Run 2 took about a minute. Run 1's own
+`seconds` field said 17 s; that was a bug (the finish time was the transaction start), fixed after this
+run. Its real length was roughly 3 to 4 minutes: the feed fetches alone add up to 1,372 s over 8 workers.
+
+The "title differs" items are Apple's listing name not matching the feed's `<title>`, not renames
+over time. A second run a week later is what shows real renames and moves.

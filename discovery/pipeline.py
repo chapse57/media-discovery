@@ -186,7 +186,9 @@ class Run:
 
     def finish(self) -> dict:
         self.log.write(self.cur, self.run_id)
-        self.cur.execute("UPDATE disc.run SET finished_at = now() WHERE run_id = %s", (self.run_id,))
+        # clock_timestamp(), not now(): now() is when this transaction began, which was before the
+        # feeds were fetched. The first live run reported 17 s for a run that took minutes.
+        self.cur.execute("UPDATE disc.run SET finished_at = clock_timestamp() WHERE run_id = %s", (self.run_id,))
         self.conn.commit()
         return summary(self.conn, self.run_id)
 
