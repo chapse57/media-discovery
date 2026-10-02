@@ -1,0 +1,71 @@
+{
+  "seconds": {
+    "copy_24_files": 11.21,
+    "normalize_keys (CTAS)": 51.38,
+    "index url_key": 14.06,
+    "index (category, name_key)": 11.27,
+    "analyze": 0.29,
+    "duplicate candidates by url_key": 23.6,
+    "name-only groups (for contrast)": 14.7
+  },
+  "facts": {
+    "name_only_collisions": 538284,
+    "single_lookup_ms": 0.072,
+    "single_lookup_plan": "Index Scan",
+    "rows": 6580000,
+    "sources": 24,
+    "stale_rows": 986387,
+    "candidate_groups": 580000,
+    "candidate_groups_cross_source": 580000,
+    "candidate_groups_renamed": 58131,
+    "table_mb": 1386,
+    "server": "PostgreSQL 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit",
+    "shared_buffers": "1GB",
+    "maintenance_work_mem": "1GB",
+    "work_mem": "4MB",
+    "max_wal_size": "4GB",
+    "planted_dupes": 580000,
+    "planted_dupes_found": 580000,
+    "candidate_groups_without_planted_dupe": 0,
+    "top_differences": [
+      [
+        "name_case",
+        17622
+      ],
+      [
+        "scheme+name_case",
+        17553
+      ],
+      [
+        "scheme",
+        11838
+      ],
+      [
+        "scheme+slash+name_case",
+        11779
+      ],
+      [
+        "identical",
+        11774
+      ],
+      [
+        "scheme+www+name_case",
+        11662
+      ],
+      [
+        "www+name_case",
+        11661
+      ],
+      [
+        "slash+name_case",
+        11595
+      ]
+    ],
+    "machine": {
+      "os": "Linux-6.18.44-fc-v51-x86_64-with-glibc2.39",
+      "cpus": 2,
+      "ram_gb": 7.8
+    },
+    "input_mb": 553
+  }
+}

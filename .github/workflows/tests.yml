@@ -1,0 +1,24 @@
+name: tests
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env: {POSTGRES_PASSWORD: pw, POSTGRES_DB: ci}
+        ports: ["5432:5432"]
+        options: --health-cmd "pg_isready -U postgres" --health-interval 5s --health-retries 10
+    env:
+      BENCH_DSN: postgresql://postgres:pw@localhost:5432/ci
+      DISCOVERY_TEST_DSN: postgresql://postgres:pw@localhost:5432/ci
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -e ".[dev]"
+      - name: pytest (fail on any skip)
+        run: |
+          python -m pytest -q -rs | tee pytest.txt
+          if grep -qE "[0-9]+ skipped" pytest.txt; then echo "::error::tests were skipped"; exit 1; fi

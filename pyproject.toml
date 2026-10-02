@@ -1,0 +1,22 @@
+[project]
+name = "media-discovery"
+version = "0.1.0"
+description = "Podcast discovery from official catalogues and RSS into Postgres, plus a 6.58M-row load and dedup benchmark."
+requires-python = ">=3.10"
+dependencies = ["psycopg[binary]>=3.1"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["discovery"]
+
+[tool.setuptools.package-data]
+discovery = ["schema.sql"]
