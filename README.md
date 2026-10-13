@@ -253,4 +253,10 @@ Permissions are split in two (files in `x-metrics-pipeline/aws/`):
 Read honestly: 2.5 GB is not a size that needs Spark — Postgres on this PC holds the whole table.
 The point of this run is the shape: a Spark job on Glue reading partitioned Parquet from S3,
 with a least-privilege role, and its output checked against an independent source before anyone
-uses it. One run, started by hand; not scheduled, not incremental, no Glue crawler.
+uses it. Not scheduled, not incremental, no Glue crawler.
+
+**From Airflow.** The same three steps (`glue.start` / `glue.wait` / `glue.compare`) run as the DAG
+`media_lake_glue` in `x-metrics-pipeline/airflow` (start never retried, so a retry cannot pay for a
+second Spark run). Its first run, 2026-10-13 13:52 KST: 2 min 25 s for the whole DAG, 127 s Glue
+execution, 255 DPU-seconds ≈ USD 0.031, Spark == Postgres **5 of 5** again. The first run above was
+started from the command line.

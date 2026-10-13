@@ -2,13 +2,16 @@
 
     python -m discovery.glue run --out results/2026-10-13-glue.json
 
-1. upload discovery/glue_job.py to s3://<bucket>/glue-scripts/
-2. create the job `xmetrics-podcast-aggregates` (or update it): Glue 5.1, 2 x G.1X, 15-minute timeout,
-   role `xmetrics-glue-job` (S3 read of the lake, write of media/aggregates/ only)
-3. start a run, wait, record its state, execution time, workers and the DPU cost
-4. read the run's summary from S3 and compare it with the same figures computed in Postgres
-   (pi.podcasts): row count, duplicate Apple ids, duplicate URL keys, and per year feeds,
-   feeds with an Apple id and episodes. Exit 1 if any differ or the run did not succeed.
+1. start():   upload discovery/glue_job.py to s3://<bucket>/glue-scripts/, create the job
+              `xmetrics-podcast-aggregates` (or update it): Glue 5.1, 2 x G.1X, 15-minute timeout,
+              role `xmetrics-glue-job` (S3 read of the lake, write of media/aggregates/ only), start a run
+2. wait():    poll until the run ends; record its state, execution time, workers and the DPU cost
+3. compare(): read the run's summary from S3 and compare it with the same figures computed in
+              Postgres (pi.podcasts): row count, duplicate Apple ids, duplicate URL keys, per year
+              feeds, feeds with an Apple id and episodes, top 10 languages.
+
+`run` does all three; the Airflow DAG `media_lake_glue` (x-metrics-pipeline/airflow) calls them as
+three tasks. The CLI exits 1 if any figure differs or the run did not succeed.
 
 Same container as discovery.lake (pyarrow is not needed here; boto3 and psycopg are).
 Postgres is only read.
@@ -31,6 +34,7 @@ SCRIPT_KEY = "glue-scripts/podcast_aggregates.py"
 SOURCE, TARGET = "media/podcasts", "media/aggregates"
 GLUE_VERSION, WORKER, WORKERS = "5.1", "G.1X", 2
 USD_PER_DPU_HOUR = 0.44           # AWS pricing page example rate; Seoul may differ
+ENDED = ("SUCCEEDED", "FAILED", "STOPPED", "TIMEOUT", "ERROR", "EXPIRED")
 
 
 def ensure_job(glue, role_arn: str) -> str:
@@ -51,42 +55,56 @@ def ensure_job(glue, role_arn: str) -> str:
         return "created"
 
 
-def run(dsn: str) -> dict:
+def start() -> dict:
+    """Upload the script, create or update the job, start one run. Not safe to repeat: every call
+    starts (and pays for) another run."""
     import boto3
-    import psycopg
 
     account = boto3.client("sts").get_caller_identity()["Account"]
-    role_arn = f"arn:aws:iam::{account}:role/{ROLE}"
     s3, glue = boto3.client("s3"), boto3.client("glue")
     s3.upload_file(str(Path(__file__).with_name("glue_job.py")), BUCKET, SCRIPT_KEY)
-    job_state = ensure_job(glue, role_arn)
+    job_state = ensure_job(glue, f"arn:aws:iam::{account}:role/{ROLE}")
     tag = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     run_id = glue.start_job_run(JobName=JOB, Arguments={"--run_tag": tag})["JobRunId"]
     log(f"  glue job {job_state}, run {run_id} started")
-    t0 = time.time()
+    return {"job": JOB, "job_state": job_state, "run_id": run_id, "run_tag": tag, "started": time.time()}
+
+
+def wait(started: dict, poll: int = 15) -> dict:
+    """Poll the run until it ends. Safe to repeat: it only reads the run's state."""
+    import boto3
+
+    glue = boto3.client("glue")
     while True:
-        jr = glue.get_job_run(JobName=JOB, RunId=run_id)["JobRun"]
+        jr = glue.get_job_run(JobName=JOB, RunId=started["run_id"])["JobRun"]
         state = jr["JobRunState"]
-        if state in ("SUCCEEDED", "FAILED", "STOPPED", "TIMEOUT", "ERROR", "EXPIRED"):
+        if state in ENDED:
             break
-        log(f"  {state} {time.time() - t0:.0f}s")
-        time.sleep(15)
+        log(f"  {state} {time.time() - started['started']:.0f}s")
+        time.sleep(poll)
     secs = jr.get("ExecutionTime", 0)
     dpu_seconds = jr.get("DPUSeconds") or secs * WORKERS          # G.1X = 1 DPU per worker
-    out = {"job": JOB, "run_id": run_id, "run_tag": tag, "state": state, "glue_version": jr.get("GlueVersion"),
-           "worker_type": jr.get("WorkerType"), "workers": jr.get("NumberOfWorkers"),
-           "execution_seconds": secs, "dpu_seconds": dpu_seconds,
-           "usd_estimate": round(dpu_seconds / 3600 * USD_PER_DPU_HOUR, 4),
-           "wall_seconds_from_start_call": round(time.time() - t0),
-           "error": jr.get("ErrorMessage")}
-    if state != "SUCCEEDED":
-        return out
+    return {"job": JOB, "run_id": started["run_id"], "run_tag": started["run_tag"], "state": state,
+            "glue_version": jr.get("GlueVersion"), "worker_type": jr.get("WorkerType"),
+            "workers": jr.get("NumberOfWorkers"), "execution_seconds": secs, "dpu_seconds": dpu_seconds,
+            "usd_estimate": round(dpu_seconds / 3600 * USD_PER_DPU_HOUR, 4),
+            "wall_seconds_from_start_call": round(time.time() - started["started"]),
+            "error": jr.get("ErrorMessage")}
 
-    summary = json.loads(s3.get_object(Bucket=BUCKET, Key=f"{TARGET}/_summary/{tag}.json")["Body"].read())
+
+def compare(dsn: str, finished: dict) -> dict:
+    """The run's summary (S3) against the same figures in Postgres. Adds checks / agree / of."""
+    import boto3
+    import psycopg
+
+    out = dict(finished)
+    tag = out["run_tag"]
+    summary = json.loads(boto3.client("s3").get_object(
+        Bucket=BUCKET, Key=f"{TARGET}/_summary/{tag}.json")["Body"].read())
     out["spark"] = summary["spark"]
     out["spark_seconds"] = {"read_and_cache": summary["seconds_read_and_cache"], "total": summary["seconds_total"]}
     checks = []
-    with psycopg.connect(dsn) as conn:
+    with psycopg.connect(dsn, connect_timeout=10) as conn:
         conn.read_only = True
         q = lambda s: conn.execute(s).fetchone()[0]  # noqa: E731
         pg = {
@@ -119,6 +137,11 @@ def run(dsn: str) -> dict:
     out["languages"] = summary["languages"]
     out["output"] = f"s3://{BUCKET}/{TARGET}/"
     return out
+
+
+def run(dsn: str) -> dict:
+    finished = wait(start())
+    return compare(dsn, finished) if finished["state"] == "SUCCEEDED" else finished
 
 
 def main(argv=None) -> int:
