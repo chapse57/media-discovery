@@ -1,0 +1,327 @@
+{
+  "machine": {
+    "platform": "Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+    "cpus": 12
+  },
+  "sample": {
+    "rows": 50000,
+    "eligible_in_dump": 247972,
+    "read_seconds": 5.6,
+    "filter": "active in 2026, language en*, description >= 200 chars, not dead, not duplicate_of, has Apple id",
+    "order": "md5(id) — deterministic, not by popularity"
+  },
+  "embed": {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "dimensions": 384,
+    "device": "cpu",
+    "torch_threads": 6,
+    "max_seq_length_tokens": 256,
+    "text": "title + '. ' + first 1500 chars of description",
+    "rows": 50000,
+    "model_load_seconds": 14.8,
+    "encode_seconds": 872.4,
+    "rows_per_second": 57,
+    "write_seconds": 1.4,
+    "rows_without_embedding": 0
+  },
+  "index": {
+    "type": "hnsw",
+    "opclass": "vector_cosine_ops",
+    "m": 16,
+    "ef_construction": 64,
+    "maintenance_work_mem": "1GB",
+    "build_seconds": 6.3,
+    "index_size": "98 MB",
+    "table_size": "143 MB",
+    "pgvector": "0.8.0",
+    "postgres": "16.10 (Debian 16.10-1.pgdg12+1)"
+  },
+  "evaluate": {
+    "queries": 200,
+    "exact": {
+      "method": "sequential scan + sort (index scans off)",
+      "p50_ms": 74.46,
+      "p95_ms": 85.38,
+      "mean_ms": 76.17
+    },
+    "ef_search_40": {
+      "recall_at_10": 0.964,
+      "queries_with_full_recall": 154,
+      "worst_recall": 0.5,
+      "p50_ms": 0.94,
+      "p95_ms": 2.32,
+      "mean_ms": 1.15
+    },
+    "ef_search_100": {
+      "recall_at_10": 0.98,
+      "queries_with_full_recall": 170,
+      "worst_recall": 0.6,
+      "p50_ms": 1.34,
+      "p95_ms": 2.11,
+      "mean_ms": 1.38
+    },
+    "plans": {
+      "exact": [
+        "Limit  (cost=13408.46..13408.48 rows=10 width=16) (actual time=86.244..86.246 rows=10 loops=1)",
+        "  ->  Sort  (cost=13408.46..13533.46 rows=49999 width=16) (actual time=86.243..86.244 rows=10 loops=1)",
+        "        Sort Key: ((embedding <=> <vector>",
+        "        Sort Method: top-N heapsort  Memory: 25kB",
+        "        ->  Seq Scan on podcasts  (cost=0.00..12328.00 rows=49999 width=16) (actual time=0.434..83.156 rows=49999 loops=1)",
+        "              Filter: (id <> 7714120)",
+        "              Rows Removed by Filter: 1",
+        "Planning Time: 0.148 ms",
+        "Execution Time: 86.265 ms"
+      ],
+      "hnsw_ef_search_40": [
+        "Limit  (cost=637.81..657.16 rows=10 width=16) (actual time=3.297..3.398 rows=10 loops=1)",
+        "  ->  Index Scan using podcasts_embedding_hnsw on podcasts  (cost=637.81..97369.00 rows=49999 width=16) (actual time=3.296..3.396 rows=10 loops=1)",
+        "        Order By: (embedding <=> <vector>",
+        "        Filter: (id <> 7714120)",
+        "        Rows Removed by Filter: 1",
+        "Planning Time: 0.181 ms",
+        "Execution Time: 3.424 ms"
+      ],
+      "hnsw_ef_search_100": [
+        "Limit  (cost=1281.16..1300.38 rows=10 width=16) (actual time=1.098..1.140 rows=10 loops=1)",
+        "  ->  Index Scan using podcasts_embedding_hnsw on podcasts  (cost=1281.16..97369.00 rows=49999 width=16) (actual time=1.097..1.139 rows=10 loops=1)",
+        "        Order By: (embedding <=> <vector>",
+        "        Filter: (id <> 7714120)",
+        "        Rows Removed by Filter: 1",
+        "Planning Time: 0.028 ms",
+        "Execution Time: 1.146 ms"
+      ]
+    },
+    "index_used_check": {
+      "hnsw_p50_over_exact_p50": 0.013,
+      "suspect_no_index": false
+    },
+    "first_category_shared_by_neighbours": {
+      "queries_with_a_category": 199,
+      "share_of_top10": 0.4603,
+      "if_neighbours_were_random": 0.086
+    },
+    "text_searches": [
+      {
+        "query": "true crime investigations of unsolved murders",
+        "top5": [
+          [
+            "True Crime Today | Daily True Crime News & Interviews",
+            "news",
+            0.713
+          ],
+          [
+            "Dark Murder: True Crime Cases",
+            "society",
+            0.697
+          ],
+          [
+            "Unsolved: Cold Case Files",
+            "true crime",
+            0.661
+          ],
+          [
+            "Crime Files Unsealed",
+            "society",
+            0.656
+          ],
+          [
+            "True Crime English",
+            "true crime",
+            0.644
+          ]
+        ]
+      },
+      {
+        "query": "personal finance and investing for beginners",
+        "top5": [
+          [
+            "My Two Cents: Finance for Teens & Young Adults",
+            "education",
+            0.668
+          ],
+          [
+            "Globodivine",
+            "business",
+            0.645
+          ],
+          [
+            "Personal Finance for Educators",
+            "education",
+            0.64
+          ],
+          [
+            "Between the Ts",
+            "business",
+            0.586
+          ],
+          [
+            "Moneywise",
+            "business",
+            0.58
+          ]
+        ]
+      },
+      {
+        "query": "machine learning and artificial intelligence research",
+        "top5": [
+          [
+            "AI-ML Decoded: From Fundamentals to Future",
+            "education",
+            0.573
+          ],
+          [
+            "AI Research Today",
+            "science",
+            0.53
+          ],
+          [
+            "AI Innovations Unleashed",
+            "technology",
+            0.513
+          ],
+          [
+            "Learn AI",
+            "education",
+            0.497
+          ],
+          [
+            "Talking with AI ML",
+            "society",
+            0.49
+          ]
+        ]
+      }
+    ]
+  },
+  "neardup": {
+    "rows": 50000,
+    "distinct_pairs": 44746,
+    "seconds": 36.3,
+    "pairs_by_similarity": {
+      ">= 0.99": 84,
+      ">= 0.95": 159,
+      ">= 0.9": 243
+    },
+    "most_similar_pairs": [
+      {
+        "similarity": 1.0,
+        "a": [
+          "Denton North Church",
+          "feedburner.com"
+        ],
+        "b": [
+          "Denton North Church",
+          "transistor.fm"
+        ]
+      },
+      {
+        "similarity": 1.0,
+        "a": [
+          "AI For The Busy Human",
+          "bellavasta.com"
+        ],
+        "b": [
+          "AI For The Busy Human",
+          "bellavasta.com"
+        ]
+      },
+      {
+        "similarity": 1.0,
+        "a": [
+          "Yoga by Nature Podcast",
+          "libsyn.com"
+        ],
+        "b": [
+          "Yoga by Nature Podcast",
+          "libsyn.com"
+        ]
+      },
+      {
+        "similarity": 1.0,
+        "a": [
+          "Spoiler Country",
+          "scpod.net"
+        ],
+        "b": [
+          "Spoiler Country",
+          "scpod.net"
+        ]
+      },
+      {
+        "similarity": 1.0,
+        "a": [
+          "REVERIES",
+          "lukejanela.net"
+        ],
+        "b": [
+          "REVERIES",
+          "lukejanela.net"
+        ]
+      },
+      {
+        "similarity": 1.0,
+        "a": [
+          "Extracting Wisdom",
+          "libsyn.com"
+        ],
+        "b": [
+          "Extracting Wisdom",
+          "riverside.fm"
+        ]
+      },
+      {
+        "similarity": 1.0,
+        "a": [
+          "Financial Management (FM) magazine",
+          "libsyn.com"
+        ],
+        "b": [
+          "Financial Management (FM) magazine",
+          "libsyn.com"
+        ]
+      },
+      {
+        "similarity": 1.0,
+        "a": [
+          "Revere Church",
+          "libsyn.com"
+        ],
+        "b": [
+          "Revere Church",
+          "libsyn.com"
+        ]
+      },
+      {
+        "similarity": 1.0,
+        "a": [
+          "Mission Log: A Roddenberry Star Trek Podcast",
+          "libsyn.com"
+        ],
+        "b": [
+          "Mission Log: A Roddenberry Star Trek Podcast",
+          "libsyn.com"
+        ]
+      },
+      {
+        "similarity": 1.0,
+        "a": [
+          "In Review – A Kinda Funny Film & TV Podcast",
+          "megaphone.fm"
+        ],
+        "b": [
+          "In Review – A Kinda Funny Film & TV Podcast",
+          "megaphone.fm"
+        ]
+      }
+    ]
+  },
+  "seconds_total": 93.9,
+  "invocations": [
+    {
+      "steps": [
+        "evaluate"
+      ],
+      "seconds": 20.3
+    }
+  ]
+}

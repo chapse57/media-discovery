@@ -1,0 +1,45 @@
+# pgvector for media-discovery: its own Postgres container, so the x-metrics Postgres (5432) is untouched.
+#
+#   cd media-discovery
+#   docker compose -f vector/docker-compose.yml up -d vectordb
+#   docker compose -f vector/docker-compose.yml run --rm embed python -m discovery.vectors all --out results/2026-10-13-vectors.json
+#   docker compose -f vector/docker-compose.yml down          (keeps the data volume; add -v to drop it)
+#
+# The source rows are read (only) from the `discovery` database in the x-metrics Postgres container.
+
+services:
+  vectordb:
+    image: pgvector/pgvector:0.8.0-pg16
+    # parallel HNSW builds use dynamic shared memory; Docker's default /dev/shm is 64 MB
+    shm_size: 2gb
+    environment:
+      POSTGRES_USER: media
+      POSTGRES_PASSWORD: media
+      POSTGRES_DB: vectors
+    ports:
+      - "5434:5432"
+    volumes:
+      - vectordb-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "media", "-d", "vectors"]
+      interval: 5s
+      retries: 10
+
+  embed:
+    build: .
+    image: media-discovery-embed:1
+    environment:
+      DISCOVERY_DSN: postgresql://xmetrics:xmetrics@host.docker.internal:5432/discovery
+      VECTOR_DSN: postgresql://media:media@vectordb:5432/vectors
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ..:/work
+      - hf-cache:/hf-cache
+    depends_on:
+      vectordb:
+        condition: service_healthy
+
+volumes:
+  vectordb-data:
+  hf-cache:

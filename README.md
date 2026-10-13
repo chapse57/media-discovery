@@ -274,3 +274,49 @@ uses it. Not scheduled, not incremental, no Glue crawler.
 second Spark run). Its first run, 2026-10-13 13:52 KST: 2 min 25 s for the whole DAG, 127 s Glue
 execution, 255 DPU-seconds ≈ USD 0.031, Spark == Postgres **5 of 5** again. The first run above was
 started from the command line.
+
+## Shows like this one: pgvector over 50,000 descriptions
+
+`discovery/vectors.py` turns podcast descriptions into vectors with a local model and searches them in
+Postgres with pgvector. It runs in its own containers (`vector/docker-compose.yml`: `pgvector/pgvector:0.8.0-pg16`
+on port 5434, and a CPU-only Python image), so the Postgres that holds `discovery` keeps its image and settings;
+`discovery` is only read.
+
+    docker compose -f vector/docker-compose.yml up -d --build vectordb
+    docker compose -f vector/docker-compose.yml build embed
+    docker compose -f vector/docker-compose.yml run --rm embed python -m discovery.vectors all --out results/2026-10-13-vectors.json
+
+Sample: 50,000 of the 247,972 dump rows that were active in 2026, in English (`en*`), have a description of
+at least 200 characters, an Apple id, and are neither dead nor marked `duplicateOf` — taken by `md5(id)`,
+not by popularity. Text = title + first 1,500 characters of the description; model
+`sentence-transformers/all-MiniLM-L6-v2` (384 dimensions, normalised, CPU).
+
+### Results (2026-10-13, 진우's PC)
+
+| step | result |
+|---|---|
+| embed | 50,000 rows in 872 s (**57 rows/s** — torch used 6 threads of 12; not tuned) |
+| HNSW index | cosine, m 16, ef_construction 64: **6.3 s** to build, 98 MB (table 143 MB) |
+| exact top 10 | sequential scan + sort: p50 **74.5 ms**, p95 85.4 ms |
+| HNSW top 10, ef_search 40 | p50 **0.94 ms**, p95 2.32 ms, **recall@10 0.964** (154 of 200 queries all 10 right, worst 5 of 10) |
+| HNSW top 10, ef_search 100 | p50 1.34 ms, p95 2.11 ms, **recall@10 0.980** (170 of 200, worst 6 of 10) |
+| does it find similar shows? | 46.0 % of the exact top 10 share the query's first category, against **8.6 %** if neighbours were random (199 queries) |
+| near-duplicates | each row's nearest neighbour (50,000 HNSW lookups, 36 s): 84 pairs at cosine ≥ 0.99, 159 ≥ 0.95, 243 ≥ 0.90 |
+
+Recall is measured, not assumed: 200 sample shows are the queries, exact search is the answer key, and
+the plans that actually ran are in the result file (`EXPLAIN ANALYZE`: Seq Scan + top-N heapsort for exact,
+Index Scan using `podcasts_embedding_hnsw` for HNSW).
+
+**The first evaluation was wrong, and how it showed.** It reported HNSW at 71 ms — the same as exact
+search — and recall exactly 1.000 at both ef_search values. psycopg prepares a query after five runs; the
+exact loop (index scans off) had prepared the same query text, and the HNSW loops reused that cached
+sequential-scan plan, so they were measuring exact search twice. Fixed by planning every execution
+(`prepare_threshold=None`) and giving exact and HNSW their own connections; the script now records
+`index_used_check` and flags a run where HNSW is not clearly faster. The wrong run is kept as
+`results/2026-10-13-vectors-run1-cached-plan.json`.
+
+Read honestly: 50,000 rows is a sample (the eligible set is 247,972; the dump 4.7 M). The category check
+is a weak label — Podcast Index's first category, and many shows have none or a broad one — so it shows
+the neighbours are far from random, not that they are right. The near-duplicate pairs are candidates:
+most of the top ten have the same title and the same or a moved host, but none was checked by hand or
+against Apple ids. No tests run the model in CI.
