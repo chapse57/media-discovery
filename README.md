@@ -217,6 +217,11 @@ and every Athena query pays about a second of start-up. Athena's case is no serv
 bytes read; the table shows how much Parquet (read only the columns asked for) and a partition
 filter (skip the other years) cut those bytes. Not done: incremental loads, a Glue crawler.
 
+In the AWS console: the 56 partition folders (`results/s3-podcasts-partitions.png`), the 2026 partition's
+file (`results/s3-partition-2026.png`, 421.3 MB), and Athena's query history with the bytes each query
+scanned (`results/athena-recent-queries.png`). The console counts in MiB: its 169.02 MB is the
+177,229,635 bytes above, 775.46 MB is 813,129,100, 33.79 MB is 35,427,988.
+
 ## The same lake, aggregated by a Spark job on AWS Glue
 
 `discovery/glue_job.py` is a PySpark script for AWS Glue. `discovery/glue.py` uploads it to S3,
@@ -274,6 +279,9 @@ uses it. Not scheduled, not incremental, no Glue crawler.
 second Spark run). Its first run, 2026-10-13 13:52 KST: 2 min 25 s for the whole DAG, 127 s Glue
 execution, 255 DPU-seconds ≈ USD 0.031, Spark == Postgres **5 of 5** again. The first run above was
 started from the command line.
+The Airflow run's task logs (start → `RUNNING` every 15 s → `SUCCEEDED` → the five `OK` lines) are in
+`x-metrics-pipeline/docs/airflow-log-excerpts-2026-10-13.txt`, the screenshot in
+`x-metrics-pipeline/docs/airflow-media-lake-glue.png`.
 
 ## Shows like this one: pgvector over 50,000 descriptions
 
