@@ -1,0 +1,375 @@
+{
+  "bucket": "ether-xmetrics-lake",
+  "prefix": "media/podcasts",
+  "database": "media_lake",
+  "export": {
+    "rows": 4731573,
+    "partitions": 56,
+    "files": 56,
+    "parquet_bytes": 2564977092,
+    "seconds": 565.5,
+    "rows_by_year": {
+      "1970": 61,
+      "1971": 2,
+      "1972": 2,
+      "1973": 2,
+      "1974": 2,
+      "1975": 5,
+      "1978": 2,
+      "1979": 4,
+      "1980": 5,
+      "1981": 3,
+      "1982": 10,
+      "1983": 9,
+      "1984": 8,
+      "1985": 9,
+      "1986": 11,
+      "1987": 7,
+      "1988": 14,
+      "1989": 16,
+      "1990": 10,
+      "1991": 22,
+      "1992": 25,
+      "1993": 38,
+      "1994": 27,
+      "1995": 20,
+      "1996": 46,
+      "1997": 37,
+      "1998": 36,
+      "1999": 50,
+      "2000": 65,
+      "2001": 67,
+      "2002": 67,
+      "2003": 97,
+      "2004": 180,
+      "2005": 1204,
+      "2006": 4336,
+      "2007": 5728,
+      "2008": 8061,
+      "2009": 11925,
+      "2010": 15039,
+      "2011": 22948,
+      "2012": 30366,
+      "2013": 37223,
+      "2014": 42277,
+      "2015": 57500,
+      "2016": 85078,
+      "2017": 113477,
+      "2018": 160457,
+      "2019": 253247,
+      "2020": 753164,
+      "2021": 729738,
+      "2022": 426930,
+      "2023": 352921,
+      "2024": 334027,
+      "2025": 395518,
+      "2026": 629814,
+      "unknown": 259636
+    },
+    "columns": [
+      [
+        "id",
+        "bigint"
+      ],
+      [
+        "url",
+        "string"
+      ],
+      [
+        "title",
+        "string"
+      ],
+      [
+        "last_update",
+        "bigint"
+      ],
+      [
+        "link",
+        "string"
+      ],
+      [
+        "last_http_status",
+        "bigint"
+      ],
+      [
+        "dead",
+        "bigint"
+      ],
+      [
+        "content_type",
+        "string"
+      ],
+      [
+        "itunes_id",
+        "bigint"
+      ],
+      [
+        "original_url",
+        "string"
+      ],
+      [
+        "itunes_author",
+        "string"
+      ],
+      [
+        "itunes_owner_name",
+        "string"
+      ],
+      [
+        "explicit",
+        "bigint"
+      ],
+      [
+        "image_url",
+        "string"
+      ],
+      [
+        "itunes_type",
+        "string"
+      ],
+      [
+        "generator",
+        "string"
+      ],
+      [
+        "newest_item_pubdate",
+        "bigint"
+      ],
+      [
+        "language",
+        "string"
+      ],
+      [
+        "oldest_item_pubdate",
+        "bigint"
+      ],
+      [
+        "episode_count",
+        "bigint"
+      ],
+      [
+        "popularity_score",
+        "bigint"
+      ],
+      [
+        "priority",
+        "bigint"
+      ],
+      [
+        "created_on",
+        "bigint"
+      ],
+      [
+        "update_frequency",
+        "bigint"
+      ],
+      [
+        "chash",
+        "string"
+      ],
+      [
+        "host",
+        "string"
+      ],
+      [
+        "newest_enclosure_url",
+        "string"
+      ],
+      [
+        "podcast_guid",
+        "string"
+      ],
+      [
+        "description",
+        "string"
+      ],
+      [
+        "category1",
+        "string"
+      ],
+      [
+        "category2",
+        "string"
+      ],
+      [
+        "category3",
+        "string"
+      ],
+      [
+        "category4",
+        "string"
+      ],
+      [
+        "category5",
+        "string"
+      ],
+      [
+        "category6",
+        "string"
+      ],
+      [
+        "category7",
+        "string"
+      ],
+      [
+        "category8",
+        "string"
+      ],
+      [
+        "category9",
+        "string"
+      ],
+      [
+        "category10",
+        "string"
+      ],
+      [
+        "newest_enclosure_duration",
+        "bigint"
+      ],
+      [
+        "podcast_id",
+        "bigint"
+      ],
+      [
+        "duplicate_of",
+        "bigint"
+      ],
+      [
+        "url_key",
+        "string"
+      ],
+      [
+        "original_url_key",
+        "string"
+      ]
+    ]
+  },
+  "upload": {
+    "files": 56,
+    "bytes": 2564977092,
+    "seconds": 224.6,
+    "location": "s3://ether-xmetrics-lake/media/podcasts/"
+  },
+  "athena": {
+    "figures": [
+      {
+        "figure": "rows",
+        "postgres": "4731573",
+        "athena": "4731573",
+        "same": true,
+        "athena_scanned_bytes": 0,
+        "athena_ms": 804,
+        "postgres_ms": 164
+      },
+      {
+        "figure": "dead",
+        "postgres": "0",
+        "athena": "0",
+        "same": true,
+        "athena_scanned_bytes": 0,
+        "athena_ms": 759,
+        "postgres_ms": 474
+      },
+      {
+        "figure": "with_itunes_id",
+        "postgres": "2970036",
+        "athena": "2970036",
+        "same": true,
+        "athena_scanned_bytes": 35427988,
+        "athena_ms": 2430,
+        "postgres_ms": 101
+      },
+      {
+        "figure": "with_podcast_guid",
+        "postgres": "4731428",
+        "athena": "4731428",
+        "same": true,
+        "athena_scanned_bytes": 173470634,
+        "athena_ms": 1674,
+        "postgres_ms": 514
+      },
+      {
+        "figure": "itunes_ids_on_more_than_one_row",
+        "postgres": "1656",
+        "athena": "1656",
+        "same": true,
+        "athena_scanned_bytes": 35427988,
+        "athena_ms": 2315,
+        "postgres_ms": 397
+      },
+      {
+        "figure": "url_keys_on_more_than_one_row",
+        "postgres": "3756",
+        "athena": "3756",
+        "same": true,
+        "athena_scanned_bytes": 76627992,
+        "athena_ms": 1250,
+        "postgres_ms": 1159
+      },
+      {
+        "figure": "marked_duplicate_of_another_row",
+        "postgres": "2769",
+        "athena": "2769",
+        "same": true,
+        "athena_scanned_bytes": 87864,
+        "athena_ms": 1561,
+        "postgres_ms": 594
+      },
+      {
+        "figure": "newest_item",
+        "postgres": "2026-09-26",
+        "athena": "2026-09-26",
+        "same": true,
+        "athena_scanned_bytes": 30554551,
+        "athena_ms": 1444,
+        "postgres_ms": 513
+      }
+    ],
+    "experiments": [
+      {
+        "question": "count_rows",
+        "result_athena": "4731573",
+        "result_postgres": "4731573",
+        "same": true,
+        "athena_scanned_bytes": 0,
+        "athena_ms": 713,
+        "athena_usd": 5.243e-05,
+        "postgres_ms": 133
+      },
+      {
+        "question": "one_int_column_all_years",
+        "result_athena": "2968370",
+        "result_postgres": "2968370",
+        "same": true,
+        "athena_scanned_bytes": 35427988,
+        "athena_ms": 2167,
+        "athena_usd": 0.00017714,
+        "postgres_ms": 211
+      },
+      {
+        "question": "largest_text_column_all_years",
+        "result_athena": "3951",
+        "result_postgres": "3951",
+        "same": true,
+        "athena_scanned_bytes": 813129100,
+        "athena_ms": 1611,
+        "athena_usd": 0.00406565,
+        "postgres_ms": 706
+      },
+      {
+        "question": "largest_text_column_2026_only",
+        "result_athena": "1546",
+        "result_postgres": "1546",
+        "same": true,
+        "athena_scanned_bytes": 177229635,
+        "athena_ms": 1078,
+        "athena_usd": 0.00088615,
+        "postgres_ms": 775
+      }
+    ],
+    "rows_by_year_equal": true,
+    "agree": 8,
+    "of": 8
+  }
+}

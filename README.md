@@ -179,3 +179,40 @@ dump's dead flag says nothing here (the export either leaves dead feeds out or d
   address is current. The most common pairs: Dow Jones' own feed vs Simplecast (5), Simplecast vs NBC News (4),
   `rss.pdrl.fm` vs Megaphone (4), and `rss.libsyn.com` vs `<show>.libsyn.com` (two Libsyn address
   forms for one feed, 6).
+
+## The dump as a data lake: Parquet on S3, queried by Athena
+
+`discovery/lake.py` reads `pi.podcasts` (the table above) and writes it as Parquet, one file per
+year of each feed's newest episode, uploads it to S3 (ap-northeast-2), creates the Athena table by
+DDL (no Glue crawler), and asks Athena and Postgres the same questions in the same run. It exits
+non-zero if any answer differs. Postgres is only read.
+
+    docker run --rm --env-file ..\x-metrics-pipeline\airflow\.env -e AWS_DEFAULT_REGION=ap-northeast-2 ^
+      -e DISCOVERY_DSN=postgresql://xmetrics:xmetrics@host.docker.internal:5432/discovery ^
+      --add-host host.docker.internal:host-gateway -e CONNECTION_CHECK_MAX_COUNT=0 -v "%cd%":/work -w /work ^
+      xmetrics-airflow:3.3.2 python -m discovery.lake all --out results/2026-10-13-lake.json
+
+(The x-metrics Airflow image is reused because it already has pyarrow and boto3; the AWS keys are
+those of the IAM user `xmetrics-pipeline`, whose policy is `x-metrics-pipeline/aws/iam-policy-xmetrics-lake.json`.)
+
+### Results (2026-10-13, the same PC)
+
+| step | result |
+|---|---|
+| Postgres → Parquet | 4,731,573 rows, 44 columns, **2,564,977,092 bytes** (snappy) in 56 partitions (`newest_year=1970` … `2026`, `unknown`), 566 s |
+| → S3 | 56 files, 225 s, `s3://ether-xmetrics-lake/media/podcasts/` |
+| Athena == Postgres | the eight 10-02 load figures **8 of 8 equal** (rows 4,731,573 · with Apple id 2,970,036 · Apple ids on >1 row 1,656 · URL keys on >1 row 3,756 · `duplicateOf` set 2,769 · dead 0 · with podcast:guid 4,731,428 · newest item 2026-09-26), and the row count of every one of the 56 partitions equal |
+
+What columnar files and a partition buy, measured (Athena bills USD 5 per TB scanned, 10 MB minimum):
+
+| question (same 2.56 GB table) | Athena scanned | Athena | Postgres | answer (both) |
+|---|---|---|---|---|
+| `count(*)` | 0 bytes (Parquet metadata) | 0.7 s | 0.1 s | 4,731,573 |
+| distinct `itunes_id` | 35.4 MB (1.4 %) | 2.2 s | 0.2 s | 2,968,370 |
+| `description` contains "artificial intelligence", all years | 813.1 MB (32 %) | 1.6 s | 0.7 s | 3,951 |
+| the same, `newest_year = '2026'` only | 177.2 MB (−78 % vs all years) | 1.1 s | 0.8 s | 1,546 |
+
+Read honestly: on this PC Postgres answers faster — the table fits in 31 GB of RAM and has indexes,
+and every Athena query pays about a second of start-up. Athena's case is no server and paying for
+bytes read; the table shows how much Parquet (read only the columns asked for) and a partition
+filter (skip the other years) cut those bytes. Not done: incremental loads, a Glue crawler, Spark.
