@@ -250,7 +250,21 @@ Permissions are split in two (files in `x-metrics-pipeline/aws/`):
 | output | 952 language groups, 56 year rows (`by_year`, `by_language` Parquet in `s3://ether-xmetrics-lake/media/aggregates/`) |
 | console | `results/glue-run-2026-10-13.png` — the run in the Glue console: Succeeded, 0 retries, 8 s start-up, 2 min 22 s execution, 0.078889 DPU-hours |
 
-Read honestly: 2.5 GB is not a size that needs Spark — Postgres on this PC holds the whole table.
+**The same aggregates in Postgres** (`python -m discovery.pg_aggregates`, read only,
+`results/2026-10-13-pg-aggregates.json`): the five questions the Spark job answers, three passes in one
+connection, answers checked against the Spark run.
+
+| | Postgres 16.15 (Docker, this PC, default settings) | Glue Spark (2 × G.1X) |
+|---|---|---|
+| the five aggregates | **3.2 s** (3.243 / 3.314 / 3.215) | 73.1 s inside the script (58.6 s of it reading and caching from S3) |
+| billed | — | 142 s execution, ≈ USD 0.035 |
+| answers | same as Spark: rows, 56 years, 952 languages, 1,656 and 3,756 duplicates | — |
+
+Not the same work: Postgres read its own pages, and three of the five queries were Index Only Scans;
+Spark pulled Parquet over the network from S3 and wrote its results back. Nor a cold cache: the first
+pass was as fast as the others, so the 5.3 GB table was already in the PC's memory (shared_buffers is
+the default 128 MB, so mostly the OS cache). What it shows is narrow: at 2.5 GB, on one PC with 31 GB
+of RAM, Spark is the wrong tool — Postgres on this PC holds the whole table.
 The point of this run is the shape: a Spark job on Glue reading partitioned Parquet from S3,
 with a least-privilege role, and its output checked against an independent source before anyone
 uses it. Not scheduled, not incremental, no Glue crawler.

@@ -1,0 +1,98 @@
+{
+  "machine": {
+    "python_platform": "Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.36",
+    "note": "Postgres runs in Docker on the same PC"
+  },
+  "postgres": {
+    "server_version": "16.15 (Debian 16.15-1.pgdg13+2)",
+    "shared_buffers": "128MB",
+    "work_mem": "4MB",
+    "max_parallel_workers_per_gather": "2",
+    "max_parallel_workers": "8"
+  },
+  "table_size": "5330 MB",
+  "table_plus_indexes": "6328 MB",
+  "plans": {
+    "rows": [
+      "Finalize Aggregate",
+      "Gather",
+      "Partial Aggregate",
+      "Parallel Index Only Scan using podcasts_itunes_id_idx on podcasts"
+    ],
+    "by_year": [
+      "Finalize GroupAggregate",
+      "Gather Merge",
+      "Partial HashAggregate",
+      "Parallel Seq Scan on podcasts"
+    ],
+    "by_language": [
+      "Finalize GroupAggregate",
+      "Gather Merge",
+      "Partial HashAggregate",
+      "Parallel Seq Scan on podcasts"
+    ],
+    "itunes_ids_on_more_than_one_row": [
+      "Aggregate",
+      "GroupAggregate",
+      "Index Only Scan using podcasts_itunes_id_idx on podcasts"
+    ],
+    "url_keys_on_more_than_one_row": [
+      "Aggregate",
+      "GroupAggregate",
+      "Index Only Scan using podcasts_url_key_idx on podcasts"
+    ]
+  },
+  "passes": [
+    {
+      "rows": 0.127,
+      "by_year": 1.089,
+      "by_language": 0.837,
+      "itunes_ids_on_more_than_one_row": 0.384,
+      "url_keys_on_more_than_one_row": 0.806,
+      "total": 3.243
+    },
+    {
+      "rows": 0.119,
+      "by_year": 1.123,
+      "by_language": 0.903,
+      "itunes_ids_on_more_than_one_row": 0.38,
+      "url_keys_on_more_than_one_row": 0.789,
+      "total": 3.314
+    },
+    {
+      "rows": 0.126,
+      "by_year": 1.084,
+      "by_language": 0.838,
+      "itunes_ids_on_more_than_one_row": 0.382,
+      "url_keys_on_more_than_one_row": 0.785,
+      "total": 3.215
+    }
+  ],
+  "total_seconds": {
+    "first": 3.243,
+    "median": 3.243,
+    "min": 3.215
+  },
+  "answers": {
+    "rows": 4731573,
+    "years": 56,
+    "languages": 952,
+    "itunes_ids_on_more_than_one_row": 1656,
+    "url_keys_on_more_than_one_row": 3756
+  },
+  "same_as_spark": {
+    "rows": true,
+    "itunes_ids_on_more_than_one_row": true,
+    "url_keys_on_more_than_one_row": true,
+    "years": true,
+    "languages": true
+  },
+  "spark_for_reference": {
+    "execution_seconds": 142,
+    "inside_script": {
+      "read_and_cache": 58.6,
+      "total": 73.1
+    },
+    "usd_estimate": 0.0347
+  }
+}
