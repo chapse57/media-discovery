@@ -215,4 +215,42 @@ What columnar files and a partition buy, measured (Athena bills USD 5 per TB sca
 Read honestly: on this PC Postgres answers faster — the table fits in 31 GB of RAM and has indexes,
 and every Athena query pays about a second of start-up. Athena's case is no server and paying for
 bytes read; the table shows how much Parquet (read only the columns asked for) and a partition
-filter (skip the other years) cut those bytes. Not done: incremental loads, a Glue crawler, Spark.
+filter (skip the other years) cut those bytes. Not done: incremental loads, a Glue crawler.
+
+## The same lake, aggregated by a Spark job on AWS Glue
+
+`discovery/glue_job.py` is a PySpark script for AWS Glue. `discovery/glue.py` uploads it to S3,
+creates (or updates) the Glue job `xmetrics-podcast-aggregates`, starts one run, waits for it, then
+computes the same figures in Postgres and compares them. Exit 1 if the run fails or any figure differs.
+
+    docker run --rm --env-file ..\x-metrics-pipeline\airflow\.env -e AWS_DEFAULT_REGION=ap-northeast-2 ^
+      -e DISCOVERY_DSN=postgresql://xmetrics:xmetrics@host.docker.internal:5432/discovery ^
+      --add-host host.docker.internal:host-gateway -v "%cd%":/work -w /work ^
+      xmetrics-airflow:3.3.2 python -m discovery.glue run --out results/2026-10-13-glue.json
+
+The Spark job reads only five of the 44 columns from `s3://…/media/podcasts/` (partition
+columns kept as strings, so `2026` and `unknown` stay what they are) and writes
+`media/aggregates/by_year/` (feeds, feeds with an Apple id, episodes per year),
+`media/aggregates/by_language/` (feeds per lower-cased, trimmed language tag) and a JSON summary.
+
+Permissions are split in two (files in `x-metrics-pipeline/aws/`):
+- the job runs as the IAM role `xmetrics-glue-job`: it can read the podcast files and the script,
+  and write only `media/aggregates/` and `glue-temp/`;
+- the IAM user `xmetrics-pipeline` that starts the job can hand over that one role and no other
+  (`iam:PassRole` on `role/xmetrics-glue-job`, only to `glue.amazonaws.com`).
+
+### Results (2026-10-13)
+
+| | |
+|---|---|
+| run | `SUCCEEDED`, Glue 5.1 (Spark 3.5.6-amzn-1), 2 × G.1X |
+| time | 142 s billed execution (inside the script: 58.6 s to read and cache 4.7 M rows, 73.1 s total); 166 s from start call to finish |
+| cost | 284 DPU-seconds ≈ **USD 0.035** at USD 0.44 per DPU-hour (AWS's example rate; the Seoul rate may differ) |
+| Spark == Postgres | **5 of 5**: rows 4,731,573 · Apple ids on >1 row 1,656 · URL keys on >1 row 3,756 · per-year feeds / with Apple id / episodes, 168 cells, 0 different · top 10 languages with counts identical |
+| output | 952 language groups, 56 year rows (`by_year`, `by_language` Parquet in `s3://ether-xmetrics-lake/media/aggregates/`) |
+| console | `results/glue-run-2026-10-13.png` — the run in the Glue console: Succeeded, 0 retries, 8 s start-up, 2 min 22 s execution, 0.078889 DPU-hours |
+
+Read honestly: 2.5 GB is not a size that needs Spark — Postgres on this PC holds the whole table.
+The point of this run is the shape: a Spark job on Glue reading partitioned Parquet from S3,
+with a least-privilege role, and its output checked against an independent source before anyone
+uses it. One run, started by hand; not scheduled, not incremental, no Glue crawler.

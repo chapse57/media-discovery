@@ -1,0 +1,138 @@
+{
+  "job": "xmetrics-podcast-aggregates",
+  "run_id": "jr_ff288114a519ffea414d5e1dad6cf37f9f3bd7a6abe5a18dd9362908d7d523b7",
+  "run_tag": "20261013T043923Z",
+  "state": "SUCCEEDED",
+  "glue_version": "5.1",
+  "worker_type": "G.1X",
+  "workers": 2,
+  "execution_seconds": 142,
+  "dpu_seconds": 284.0,
+  "usd_estimate": 0.0347,
+  "wall_seconds_from_start_call": 166,
+  "error": null,
+  "spark": "3.5.6-amzn-1",
+  "spark_seconds": {
+    "read_and_cache": 58.6,
+    "total": 73.1
+  },
+  "checks": [
+    {
+      "figure": "rows",
+      "postgres": 4731573,
+      "spark": 4731573,
+      "same": true
+    },
+    {
+      "figure": "itunes_ids_on_more_than_one_row",
+      "postgres": 1656,
+      "spark": 1656,
+      "same": true
+    },
+    {
+      "figure": "url_keys_on_more_than_one_row",
+      "postgres": 3756,
+      "spark": 3756,
+      "same": true
+    },
+    {
+      "figure": "per-year feeds / with_itunes_id / episodes",
+      "cells": 168,
+      "differ": 0,
+      "same": true,
+      "first_differences": []
+    },
+    {
+      "figure": "top 10 languages",
+      "postgres": [
+        [
+          "en",
+          1866547
+        ],
+        [
+          "en-us",
+          652504
+        ],
+        [
+          "es",
+          461378
+        ],
+        [
+          "pt",
+          189322
+        ],
+        [
+          "es-es",
+          156274
+        ],
+        [
+          "",
+          115223
+        ],
+        [
+          "in",
+          101448
+        ],
+        [
+          "fr",
+          100967
+        ],
+        [
+          "de",
+          91723
+        ],
+        [
+          "it",
+          70777
+        ]
+      ],
+      "spark": [
+        [
+          "en",
+          1866547
+        ],
+        [
+          "en-us",
+          652504
+        ],
+        [
+          "es",
+          461378
+        ],
+        [
+          "pt",
+          189322
+        ],
+        [
+          "es-es",
+          156274
+        ],
+        [
+          "",
+          115223
+        ],
+        [
+          "in",
+          101448
+        ],
+        [
+          "fr",
+          100967
+        ],
+        [
+          "de",
+          91723
+        ],
+        [
+          "it",
+          70777
+        ]
+      ],
+      "same": true
+    }
+  ],
+  "agree": 5,
+  "of": 5,
+  "languages": 952,
+  "output": "s3://ether-xmetrics-lake/media/aggregates/"
+}
