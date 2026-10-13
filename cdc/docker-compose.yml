@@ -1,0 +1,97 @@
+# Kafka change capture for media-discovery (discovery/cdc.py), in its own containers.
+# The x-metrics Postgres (5432) and the pgvector container (5434) are not touched.
+# No restart policy on purpose: after a reboot these stay down, so they never compete with the
+# weekly x-metrics run for memory. Heaps are capped (Kafka 512 MB, Connect 768 MB).
+#
+#   cd /d C:\Users\PC\Desktop\Upwork\claude-work\media-discovery
+#   docker compose -f cdc/docker-compose.yml up -d --build srcdb kafka connect
+#   docker compose -f cdc/docker-compose.yml run --rm tools python -m discovery.cdc run --out results/2026-10-14-cdc.json
+#   docker compose -f cdc/docker-compose.yml down -v      (topics, replication slot, data: all gone)
+#
+# Versions checked 2026-10-13: Kafka 4.3.1 (latest supported release), Debezium 3.6.3.Final
+# (latest stable; its Connect image is built on Kafka 4.3.0), confluent-kafka 2.15.1.
+
+name: media-cdc
+
+services:
+  srcdb:
+    image: postgres:16
+    command: ["postgres", "-c", "wal_level=logical", "-c", "max_wal_senders=4", "-c", "max_replication_slots=4"]
+    environment:
+      POSTGRES_USER: cdc
+      POSTGRES_PASSWORD: cdc
+      POSTGRES_DB: cdc
+    ports:
+      - "127.0.0.1:5435:5432"
+    volumes:
+      - srcdb-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "cdc", "-d", "cdc"]
+      interval: 5s
+      retries: 20
+
+  kafka:
+    image: apache/kafka:4.3.1
+    hostname: kafka
+    environment:
+      # one node, broker and KRaft controller in the same process (no ZooKeeper)
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: "broker,controller"
+      KAFKA_LISTENERS: "PLAINTEXT://:9092,CONTROLLER://:9093"
+      KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://kafka:9092"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT"
+      KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
+      KAFKA_INTER_BROKER_LISTENER_NAME: "PLAINTEXT"
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@kafka:9093"
+      CLUSTER_ID: "oFBsJR16S_-eZksGiZThhA"           # base64url UUID, any fixed value
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_SHARE_COORDINATOR_STATE_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_SHARE_COORDINATOR_STATE_TOPIC_MIN_ISR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_LOG_DIRS: "/tmp/kraft-combined-logs"     # inside the container: removed by `down`
+      KAFKA_HEAP_OPTS: "-Xms512m -Xmx512m"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list > /dev/null"]
+      interval: 10s
+      timeout: 20s
+      retries: 12
+      start_period: 20s
+
+  connect:
+    image: quay.io/debezium/connect:3.6.3.Final
+    depends_on:
+      kafka: {condition: service_healthy}
+      srcdb: {condition: service_healthy}
+    environment:
+      BOOTSTRAP_SERVERS: kafka:9092
+      GROUP_ID: media-cdc-connect
+      CONFIG_STORAGE_TOPIC: connect_configs
+      OFFSET_STORAGE_TOPIC: connect_offsets
+      STATUS_STORAGE_TOPIC: connect_statuses
+      CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
+      HEAP_OPTS: "-Xms256m -Xmx768m"
+    ports:
+      - "127.0.0.1:8083:8083"                      # Kafka Connect REST, for curl from the PC
+
+  tools:
+    build: .
+    image: media-cdc-tools:1
+    profiles: ["tools"]                            # only with `run --rm tools ...`
+    depends_on:
+      connect: {condition: service_started}
+    environment:
+      CDC_DSN: postgresql://cdc:cdc@srcdb:5432/cdc
+      KAFKA_BOOTSTRAP: kafka:9092
+      CONNECT_URL: http://connect:8083
+      KAFKA_IMAGE: apache/kafka:4.3.1
+      CONNECT_IMAGE: quay.io/debezium/connect:3.6.3.Final
+    volumes:
+      - ..:/work                                   # the repo; the dump is read from data/ (read only)
+    working_dir: /work
+
+volumes:
+  srcdb-data:

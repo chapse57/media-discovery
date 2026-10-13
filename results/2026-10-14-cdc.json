@@ -1,0 +1,533 @@
+{
+  "machine": {
+    "os": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+    "cpu": "x86_64",
+    "logical_cpus": 12,
+    "ram_gb": 15.2,
+    "python": "3.12.15"
+  },
+  "settings": {
+    "rows": 100000,
+    "reserve": 20000,
+    "stream_changes": 3000,
+    "kill_changes": 3000,
+    "rate_per_second": 50.0,
+    "kill_after_messages": 1000,
+    "consumer_batch": 500,
+    "consumer_poll_s": 0.1,
+    "commit_every_s": 1.0,
+    "idle_exit_s": 10.0,
+    "partitions": 3
+  },
+  "versions": {
+    "postgres": "16.15 (Debian 16.15-1.pgdg13+2)",
+    "kafka_image": "apache/kafka:4.3.1",
+    "connect_image": "quay.io/debezium/connect:3.6.3.Final",
+    "confluent_kafka": "2.15.1",
+    "librdkafka": "2.15.1",
+    "connect": "4.3.0",
+    "debezium_postgres": "3.6.3.Final"
+  },
+  "seed": {
+    "source_file": "data/podcastindex_feeds.db",
+    "rows": 100000,
+    "id_range": [
+      1,
+      121050
+    ],
+    "reserve_rows": 20000,
+    "reserve_id_range": [
+      121051,
+      143823
+    ],
+    "values_nulled_or_cleaned": {
+      "updated_at": 132
+    },
+    "seconds": 6.1
+  },
+  "connector": {
+    "connect_version": "4.3.0",
+    "plugin": "io.debezium.connector.postgresql.PostgresConnector",
+    "plugin_version": "3.6.3.Final",
+    "seconds_to_running": 1.2,
+    "config": {
+      "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+      "tasks.max": "1",
+      "database.hostname": "srcdb",
+      "database.port": "5432",
+      "database.user": "cdc",
+      "database.dbname": "cdc",
+      "topic.prefix": "cdc",
+      "plugin.name": "pgoutput",
+      "slot.name": "dbz_podcasts",
+      "publication.name": "dbz_podcasts",
+      "publication.autocreate.mode": "filtered",
+      "table.include.list": "src.podcasts",
+      "snapshot.mode": "initial",
+      "tombstones.on.delete": "true",
+      "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "key.converter.schemas.enable": "false",
+      "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "value.converter.schemas.enable": "false",
+      "topic.creation.default.replication.factor": "1",
+      "topic.creation.default.partitions": "3"
+    },
+    "topic": {
+      "topic": "cdc.src.podcasts",
+      "partitions": 3,
+      "seconds_waited": 0.1
+    }
+  },
+  "snapshot": {
+    "consumer": {
+      "run_id": 1,
+      "group": "sink-main",
+      "phase": "snapshot",
+      "messages": 100000,
+      "exit_reason": "idle",
+      "snapshot_last_record_seen": true,
+      "first_offsets": {
+        "cdc.src.podcasts[2]": 0,
+        "cdc.src.podcasts[1]": 0,
+        "cdc.src.podcasts[0]": 0
+      },
+      "detail": null,
+      "seconds": 16.2,
+      "returncode": 0
+    },
+    "messages_applied": 100000,
+    "apply_seconds": 5.8,
+    "compare": {
+      "source_rows": 100000,
+      "sink_rows": 100000,
+      "source_md5": "435d21e223d5ed63e123720eeeb26ee6",
+      "sink_md5": "435d21e223d5ed63e123720eeeb26ee6",
+      "missing_in_sink": 0,
+      "extra_in_sink": 0,
+      "different": 0,
+      "columns_compared": 13,
+      "columns_only_in_source": [],
+      "equal": true
+    },
+    "offsets": {
+      "partitions": {
+        "0": {
+          "low": 0,
+          "committed": 33341,
+          "high": 33341,
+          "lag": 0
+        },
+        "1": {
+          "low": 0,
+          "committed": 33253,
+          "high": 33253,
+          "lag": 0
+        },
+        "2": {
+          "low": 0,
+          "committed": 33406,
+          "high": 33406,
+          "lag": 0
+        }
+      },
+      "lag_total": 0
+    }
+  },
+  "stream": {
+    "generator": {
+      "transactions": 3000,
+      "insert": 606,
+      "update": 2098,
+      "delete": 296,
+      "seconds": 60.0,
+      "per_second": 50.0,
+      "target_per_second": 50.0,
+      "seed": 1
+    },
+    "consumer": {
+      "run_id": 2,
+      "group": "sink-main",
+      "phase": "stream",
+      "messages": 3296,
+      "exit_reason": "idle",
+      "snapshot_last_record_seen": false,
+      "first_offsets": {
+        "cdc.src.podcasts[2]": 33406,
+        "cdc.src.podcasts[0]": 33341,
+        "cdc.src.podcasts[1]": 33253
+      },
+      "detail": null,
+      "seconds": 71.1,
+      "returncode": 0
+    },
+    "latency": {
+      "changes": 3000,
+      "p50_ms": 530.1,
+      "p95_ms": 865.9,
+      "max_ms": 1050.0,
+      "min_ms": 57.3
+    },
+    "compare": {
+      "source_rows": 100310,
+      "sink_rows": 100310,
+      "source_md5": "63a991867f076ad4239e7463f4a86137",
+      "sink_md5": "63a991867f076ad4239e7463f4a86137",
+      "missing_in_sink": 0,
+      "extra_in_sink": 0,
+      "different": 0,
+      "columns_compared": 13,
+      "columns_only_in_source": [],
+      "equal": true
+    },
+    "offsets": {
+      "partitions": {
+        "0": {
+          "low": 0,
+          "committed": 34399,
+          "high": 34399,
+          "lag": 0
+        },
+        "1": {
+          "low": 0,
+          "committed": 34351,
+          "high": 34351,
+          "lag": 0
+        },
+        "2": {
+          "low": 0,
+          "committed": 34546,
+          "high": 34546,
+          "lag": 0
+        }
+      },
+      "lag_total": 0
+    }
+  },
+  "kill": {
+    "generator": {
+      "transactions": 3000,
+      "delete": 302,
+      "insert": 589,
+      "update": 2109,
+      "seconds": 60.0,
+      "per_second": 50.0,
+      "target_per_second": 50.0,
+      "seed": 2
+    },
+    "killed_after_messages_in_phase": 1024,
+    "killed_run_ended_at": null,
+    "returncode_of_killed": -9,
+    "at_kill": {
+      "committed": {
+        "0": {
+          "low": 0,
+          "committed": 34761,
+          "high": 34776,
+          "lag": 15
+        },
+        "1": {
+          "low": 0,
+          "committed": 34663,
+          "high": 34672,
+          "lag": 9
+        },
+        "2": {
+          "low": 0,
+          "committed": 34868,
+          "high": 34872,
+          "lag": 4
+        }
+      },
+      "applied_max": {
+        "0": 34775,
+        "1": 34671,
+        "2": 34871
+      },
+      "applied_in_phase": 1024
+    },
+    "applied_but_not_committed_at_kill": 28,
+    "restart": {
+      "run_id": 4,
+      "group": "sink-main",
+      "phase": "kill-restart",
+      "messages": 2306,
+      "exit_reason": "idle",
+      "snapshot_last_record_seen": false,
+      "first_offsets": {
+        "cdc.src.podcasts[1]": 34663,
+        "cdc.src.podcasts[2]": 34868,
+        "cdc.src.podcasts[0]": 34761
+      },
+      "detail": null,
+      "seconds": 49.4,
+      "returncode": 0
+    },
+    "restart_committed_at_start": {
+      "cdc.src.podcasts[0]": 34761,
+      "cdc.src.podcasts[1]": 34663,
+      "cdc.src.podcasts[2]": 34868
+    },
+    "restart_first_offsets": {
+      "cdc.src.podcasts[0]": 34761,
+      "cdc.src.podcasts[1]": 34663,
+      "cdc.src.podcasts[2]": 34868
+    },
+    "resumed_at_committed_offsets": true,
+    "redelivered": {
+      "messages_delivered_more_than_once": 28,
+      "extra_deliveries": 28
+    },
+    "compare": {
+      "source_rows": 100597,
+      "sink_rows": 100597,
+      "source_md5": "81db5401b5c7123ace363830c77e8cbf",
+      "sink_md5": "81db5401b5c7123ace363830c77e8cbf",
+      "missing_in_sink": 0,
+      "extra_in_sink": 0,
+      "different": 0,
+      "columns_compared": 13,
+      "columns_only_in_source": [],
+      "equal": true
+    },
+    "offsets": {
+      "partitions": {
+        "0": {
+          "low": 0,
+          "committed": 35579,
+          "high": 35579,
+          "lag": 0
+        },
+        "1": {
+          "low": 0,
+          "committed": 35401,
+          "high": 35401,
+          "lag": 0
+        },
+        "2": {
+          "low": 0,
+          "committed": 35618,
+          "high": 35618,
+          "lag": 0
+        }
+      },
+      "lag_total": 0
+    }
+  },
+  "replay": {
+    "group": "sink-replay",
+    "consumer": {
+      "run_id": 5,
+      "group": "sink-replay",
+      "phase": "replay",
+      "messages": 106598,
+      "exit_reason": "idle",
+      "snapshot_last_record_seen": true,
+      "first_offsets": {
+        "cdc.src.podcasts[2]": 0,
+        "cdc.src.podcasts[1]": 0,
+        "cdc.src.podcasts[0]": 0
+      },
+      "detail": null,
+      "seconds": 16.6,
+      "returncode": 0
+    },
+    "seconds_including_idle_exit": 17.0,
+    "topic_starts_at_offset_0": true,
+    "compare": {
+      "source_rows": 100597,
+      "sink_rows": 100597,
+      "source_md5": "81db5401b5c7123ace363830c77e8cbf",
+      "sink_md5": "81db5401b5c7123ace363830c77e8cbf",
+      "missing_in_sink": 0,
+      "extra_in_sink": 0,
+      "different": 0,
+      "columns_compared": 13,
+      "columns_only_in_source": [],
+      "equal": true
+    },
+    "offsets": {
+      "partitions": {
+        "0": {
+          "low": 0,
+          "committed": 35579,
+          "high": 35579,
+          "lag": 0
+        },
+        "1": {
+          "low": 0,
+          "committed": 35401,
+          "high": 35401,
+          "lag": 0
+        },
+        "2": {
+          "low": 0,
+          "committed": 35618,
+          "high": 35618,
+          "lag": 0
+        }
+      },
+      "lag_total": 0
+    }
+  },
+  "schema": {
+    "change": "ALTER TABLE src.podcasts ADD COLUMN region text",
+    "generator": {
+      "transactions": 50,
+      "update": 50,
+      "seconds": 1.0,
+      "per_second": 50.9,
+      "target_per_second": 50.0,
+      "seed": 3
+    },
+    "consumer_stopped": {
+      "run_id": 6,
+      "group": "sink-main",
+      "phase": "schema",
+      "messages": 0,
+      "exit_reason": "schema_drift",
+      "snapshot_last_record_seen": false,
+      "first_offsets": {
+        "cdc.src.podcasts[2]": 35618,
+        "cdc.src.podcasts[0]": 35579,
+        "cdc.src.podcasts[1]": 35401
+      },
+      "detail": {
+        "topic": "cdc.src.podcasts",
+        "partition": 2,
+        "offset": 35618,
+        "columns_not_in_sink": [
+          "region"
+        ],
+        "sink_columns_not_in_message": []
+      },
+      "seconds": 1.2,
+      "returncode": 3
+    },
+    "offsets_at_stop": {
+      "partitions": {
+        "0": {
+          "low": 0,
+          "committed": 35579,
+          "high": 35583,
+          "lag": 4
+        },
+        "1": {
+          "low": 0,
+          "committed": 35401,
+          "high": 35407,
+          "lag": 6
+        },
+        "2": {
+          "low": 0,
+          "committed": 35618,
+          "high": 35624,
+          "lag": 6
+        }
+      },
+      "lag_total": 16
+    },
+    "compare_while_stopped": {
+      "source_rows": 100597,
+      "sink_rows": 100597,
+      "source_md5": "150ffd38c8195099c86bf14699c8dcc8",
+      "sink_md5": "81db5401b5c7123ace363830c77e8cbf",
+      "missing_in_sink": 0,
+      "extra_in_sink": 0,
+      "different": 50,
+      "columns_compared": 13,
+      "columns_only_in_source": [
+        "region"
+      ],
+      "equal": false
+    },
+    "fix": "ALTER TABLE sink.podcasts ADD COLUMN region text",
+    "consumer_after_fix": {
+      "run_id": 7,
+      "group": "sink-main",
+      "phase": "schema-fixed",
+      "messages": 50,
+      "exit_reason": "idle",
+      "snapshot_last_record_seen": false,
+      "first_offsets": {
+        "cdc.src.podcasts[0]": 35579,
+        "cdc.src.podcasts[1]": 35401,
+        "cdc.src.podcasts[2]": 35618
+      },
+      "detail": null,
+      "seconds": 10.2,
+      "returncode": 0
+    },
+    "restarted_at_drift_message": true,
+    "compare": {
+      "source_rows": 100597,
+      "sink_rows": 100597,
+      "source_md5": "04cebd0ac06af70d7b70944048bc744b",
+      "sink_md5": "04cebd0ac06af70d7b70944048bc744b",
+      "missing_in_sink": 0,
+      "extra_in_sink": 0,
+      "different": 0,
+      "columns_compared": 14,
+      "columns_only_in_source": [],
+      "equal": true
+    },
+    "offsets": {
+      "partitions": {
+        "0": {
+          "low": 0,
+          "committed": 35594,
+          "high": 35594,
+          "lag": 0
+        },
+        "1": {
+          "low": 0,
+          "committed": 35414,
+          "high": 35414,
+          "lag": 0
+        },
+        "2": {
+          "low": 0,
+          "committed": 35640,
+          "high": 35640,
+          "lag": 0
+        }
+      },
+      "lag_total": 0
+    }
+  },
+  "seconds_total": 198.6,
+  "summary": {
+    "snapshot": {
+      "rows": 100000,
+      "apply_seconds": 5.8,
+      "equal": true,
+      "lag": 0
+    },
+    "stream": {
+      "transactions": 3000,
+      "per_second": 50.0,
+      "delay_p50_ms": 530.1,
+      "delay_p95_ms": 865.9,
+      "delay_max_ms": 1050.0,
+      "equal": true
+    },
+    "kill": {
+      "killed_after_messages": 1024,
+      "applied_not_committed": 28,
+      "redelivered": 28,
+      "resumed_at_committed_offsets": true,
+      "equal": true,
+      "lag": 0
+    },
+    "replay": {
+      "messages": 106598,
+      "from_offset_0": true,
+      "equal": true
+    },
+    "schema": {
+      "consumer_stopped": "schema_drift",
+      "rows_behind_while_stopped": 50,
+      "restarted_at_drift_message": true,
+      "equal": true
+    }
+  }
+}

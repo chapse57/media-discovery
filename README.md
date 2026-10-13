@@ -52,6 +52,11 @@ same-title lookalike, conflicting identifiers, Podcast Index auth header checked
 `tests/test_bench.py` scores the benchmark's duplicate query at small scale.
 `tests/test_pidump.py` loads a fake dump (camelCase columns, a dirty integer, a NUL byte) and checks the
 match order, URL normalisation, conflicting keys, duplicate dump rows, dead and moved feeds.
+`tests/test_cdc.py` drives the change-capture consumer ([below](#change-capture-postgres--debezium--kafka--postgres))
+without Debezium: a trigger writes Debezium-shaped events, which are applied directly (re-applying is a
+no-op and is counted, a new column stops the batch before any write, the source/sink diff names each
+kind of difference) and, in one test, sent through librdkafka's mock broker to a consumer process that
+is SIGKILLed mid-stream and must resume at the committed offsets with the sink equal to the source.
 CI runs all of them against Postgres 16 and fails on any skip.
 
 ## Run it live (Windows, the x-metrics Postgres container)
@@ -328,3 +333,53 @@ is a weak label — Podcast Index's first category, and many shows have none or 
 the neighbours are far from random, not that they are right. The near-duplicate pairs are candidates:
 most of the top ten have the same title and the same or a moved host, but none was checked by hand or
 against Apple ids. No tests run the model in CI.
+
+## Change capture: Postgres → Debezium → Kafka → Postgres
+
+`discovery/cdc.py` copies one table through Kafka and checks the copy. Debezium reads the source table's
+changes from Postgres's write-ahead log (logical replication, `pgoutput`), Kafka keeps them in a topic, and a
+Python consumer applies them to a second table. Everything runs in its own containers
+(`cdc/docker-compose.yml`): Postgres 16 on port 5435 with `wal_level=logical`, Kafka 4.3.1 (one node, KRaft,
+no ZooKeeper), Kafka Connect with Debezium 3.6.3.Final, and a Python image for this module. The Postgres that
+holds `discovery` (5432) and pgvector (5434) are not touched; the dump is opened read only. No restart policy:
+after a reboot these containers stay down.
+
+    docker compose -f cdc/docker-compose.yml up -d --build srcdb kafka connect
+    docker compose -f cdc/docker-compose.yml run --rm tools python -m discovery.cdc run --out results/2026-10-14-cdc.json
+    docker compose -f cdc/docker-compose.yml down -v
+
+Source: the 100,000 lowest ids of the dump, 13 columns; the next 20,000 rows are held back for inserts.
+The consumer commits a Kafka offset only after the sink transaction holding that message has committed, and
+applies by primary key (upsert, delete), so a message delivered twice changes nothing. Every delivery is
+logged in `sink.applied` by (group, partition, offset), so a second delivery is counted rather than hidden.
+
+| phase | what happens | what is checked |
+|---|---|---|
+| snapshot | Debezium reads the whole table once | rows, md5 over every row, row-by-row diff (missing / extra / different) |
+| stream | 3,000 single-row transactions at 50 per second: inserts, updates, deletes | delay from source commit (Debezium `source.ts_us`) to sink write, p50 / p95 / max, both from the same Postgres clock; diff |
+| kill | the consumer is SIGKILLed after 1,000 messages and started again | resumed at the offsets committed before the kill; redelivered = applied but not yet committed; diff |
+| replay | sink emptied; a new consumer group reads the topic from offset 0 | the topic still starts at 0; diff |
+| schema | `ALTER TABLE … ADD COLUMN region` on the source, then 50 updates | the consumer stops at the first message carrying the column, writes nothing past it; the column is added to the sink; the consumer resumes at that message; diff |
+
+### Results (2026-10-14, 진우's PC, Docker Desktop / WSL2, 199 s for the whole run)
+
+Raw output: [`results/2026-10-14-cdc.json`](results/2026-10-14-cdc.json). Versions: Kafka 4.3.1, Kafka Connect
+4.3.0 with Debezium Postgres connector 3.6.3.Final, Postgres 16.15, confluent-kafka 2.15.1. Every phase ended with
+the sink equal to the source (rows, md5 over every row, 0 missing / extra / different) and consumer lag 0.
+
+| phase | result |
+|---|---|
+| seed | 100,000 rows + 20,000 held back; `lastUpdate` 0 or out of range → NULL on 132 rows |
+| snapshot | 100,000 messages applied in 5.8 s; equal |
+| stream | 3,000 transactions at 50/s (606 inserts, 2,098 updates, 296 deletes); delay p50 **530 ms**, p95 **866 ms**, max 1,050 ms; equal |
+| kill | SIGKILL after 1,024 messages; 28 were applied but not yet committed, and exactly **28** came again; all 3 partitions resumed at the committed offset; equal |
+| replay | new group from offset 0 (topic still starts at 0): 106,598 messages, rebuilt; equal |
+| schema | `ADD COLUMN region` + 50 updates: the consumer stopped at the first message carrying it (sink 50 rows behind, nothing written past it); column added to the sink; restarted at that message; equal on 14 columns |
+
+Most of the ~530 ms delay is probably Debezium's default `poll.interval.ms` (500 ms) — not measured separately,
+defaults left as they are. The full sequence was first rehearsed without Docker (local Postgres, librdkafka's mock
+broker, the tests' fake source) to check the orchestration; those numbers are not reported.
+
+Read honestly: one broker, replication factor 1, Debezium connecting as the database superuser. It exercises
+the mechanics on a laptop; it is not a production setup and not evidence of running Kafka in production.
+
